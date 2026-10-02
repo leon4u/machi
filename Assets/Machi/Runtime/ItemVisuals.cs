@@ -29,7 +29,8 @@ namespace Machi
             if (string.IsNullOrEmpty(id)) return null;
             if (!_cache.TryGetValue(id, out var s))
             {
-                s = Resources.Load<Sprite>("Items/" + id);
+                // Accept both "tool_01.png" and the art list's "item_tool_01.png".
+                s = Resources.Load<Sprite>("Items/" + id) ?? Resources.Load<Sprite>("Items/item_" + id);
                 _cache[id] = s;
             }
             return s;
