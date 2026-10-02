@@ -12,6 +12,7 @@ namespace Machi
         Game _game;
         ItemVisuals _visuals;
         RectTransform _grid;
+        RectTransform _area;
         RectTransform _dragLayer;
         CellView[] _cells;
         Text _info;
@@ -21,6 +22,7 @@ namespace Machi
             _game = game;
             _visuals = visuals;
             _dragLayer = dragLayer;
+            _area = area;
             var b = game.Board;
 
             _info = UiKit.Label("Info", area, "点击工具箱产出物品，拖动相同物品合成", 30, UiKit.Ink);
@@ -59,6 +61,17 @@ namespace Machi
         void OnDestroy()
         {
             if (_game != null) _game.Board.CellChanged -= Refresh;
+        }
+
+        // Shrink the grid to fit its area (below the info line) so a wide or short window
+        // never pushes it over the order cards.
+        void LateUpdate()
+        {
+            if (_grid == null) return;
+            var avail = _area.rect.size;
+            float frame = 32f;
+            float s = Mathf.Min(1f, avail.x / (_grid.sizeDelta.x + frame), avail.y * 0.92f / (_grid.sizeDelta.y + frame));
+            if (s > 0f && Mathf.Abs(_grid.localScale.x - s) > 0.001f) _grid.localScale = new Vector3(s, s, 1f);
         }
 
         void Refresh(int x, int y)
@@ -155,7 +168,7 @@ namespace Machi
         {
             if (!_hasItem) return;
             // Switch from stretch anchors to a fixed size so the item keeps its size on the drag layer.
-            var size = _item.rect.size;
+            var size = _item.rect.size * (_item.lossyScale.x / _board.DragLayer.lossyScale.x);
             var world = _item.position;
             _item.anchorMin = _item.anchorMax = new Vector2(0.5f, 0.5f);
             _item.sizeDelta = size;
