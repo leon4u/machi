@@ -1,0 +1,69 @@
+{
+  "boardWidth": 7,
+  "boardHeight": 9,
+  "startCoins": 0,
+  "startMaterials": 0,
+  "startEnergy": 100,
+  "maxEnergy": 100,
+  "energyRegenSeconds": 120,
+  "items": [
+    { "id": "tool_01", "name": "抹布", "chain": "tool", "level": 1, "next": "tool_02" },
+    { "id": "tool_02", "name": "清洁套装", "chain": "tool", "level": 2, "next": "tool_03" },
+    { "id": "tool_03", "name": "修理工具", "chain": "tool", "level": 3, "next": "tool_04" },
+    { "id": "tool_04", "name": "木工工具", "chain": "tool", "level": 4, "next": "tool_05" },
+    { "id": "tool_05", "name": "高级维修箱", "chain": "tool", "level": 5, "next": "" },
+    { "id": "plank", "name": "木板", "chain": "material", "level": 1, "next": "" }
+  ],
+  "generators": [
+    { "id": "gen_toolbox", "name": "旧工具箱", "energyCost": 1,
+      "outputs": [ { "item": "tool_01", "weight": 80 }, { "item": "plank", "weight": 20 } ] }
+  ],
+  "orders": [
+    { "id": "o_office", "npc": "神谷", "title": "先把项目办公室收拾出来",
+      "requires": [ { "item": "tool_02", "count": 1 } ],
+      "rewardCoins": 10, "rewardMaterials": 2, "prereqBuilding": "", "prereqStage": 0, "prereqOrder": "" },
+    { "id": "o_sign", "npc": "神谷", "title": "修好车站的站牌",
+      "requires": [ { "item": "tool_02", "count": 1 }, { "item": "tool_03", "count": 1 } ],
+      "rewardCoins": 20, "rewardMaterials": 3, "prereqBuilding": "office_hut", "prereqStage": 1, "prereqOrder": "" },
+    { "id": "o_chizuru_door", "npc": "千鹤", "title": "帮忙整理千鹤堂的店门和招牌",
+      "requires": [ { "item": "tool_01", "count": 1 }, { "item": "tool_03", "count": 1 }, { "item": "plank", "count": 2 } ],
+      "rewardCoins": 30, "rewardMaterials": 5, "prereqBuilding": "station_sign", "prereqStage": 1, "prereqOrder": "" },
+    { "id": "o_waiting_room", "npc": "春江", "title": "把候车室的木板拆掉",
+      "requires": [ { "item": "tool_04", "count": 1 } ],
+      "rewardCoins": 30, "rewardMaterials": 4, "prereqBuilding": "station_sign", "prereqStage": 1, "prereqOrder": "" },
+    { "id": "o_chizuru_bench", "npc": "千鹤", "title": "修好店里的制作台",
+      "requires": [ { "item": "tool_04", "count": 1 }, { "item": "plank", "count": 3 } ],
+      "rewardCoins": 40, "rewardMaterials": 8, "prereqBuilding": "chizurudo", "prereqStage": 1, "prereqOrder": "" },
+    { "id": "o_chizuru_open", "npc": "千鹤", "title": "准备正式营业",
+      "requires": [ { "item": "tool_05", "count": 1 } ],
+      "rewardCoins": 60, "rewardMaterials": 10, "prereqBuilding": "chizurudo", "prereqStage": 2, "prereqOrder": "" }
+  ],
+  "buildings": [
+    { "id": "office_hut", "name": "项目办公室", "region": "R1_station",
+      "stages": [ { "cost": 2, "revival": 1, "note": "清理可用" } ] },
+    { "id": "station_sign", "name": "站牌", "region": "R1_station",
+      "stages": [ { "cost": 3, "revival": 2, "note": "修复、灯亮" } ] },
+    { "id": "station_waiting_room", "name": "候车室", "region": "R1_station",
+      "stages": [ { "cost": 4, "revival": 1, "note": "清理开放" } ] },
+    { "id": "chizurudo", "name": "千鹤堂", "region": "R2_shop_street_front",
+      "stages": [ { "cost": 5, "revival": 2, "note": "门面修复" },
+                  { "cost": 8, "revival": 2, "note": "每周营业两天" },
+                  { "cost": 10, "revival": 3, "note": "正式营业" } ] }
+  ],
+  "regions": [
+    { "id": "R1_station", "name": "旧车站区", "chapter": "Ch1", "unlockedAtStart": true },
+    { "id": "R2_shop_street_front", "name": "商店街前段", "chapter": "Ch1-2", "unlockedAtStart": true },
+    { "id": "R3_public_bath", "name": "公共浴场", "chapter": "Ch3", "unlockedAtStart": false },
+    { "id": "R4_shop_street_rear", "name": "商店街后段", "chapter": "Ch5", "unlockedAtStart": false },
+    { "id": "R5_riverside", "name": "河岸", "chapter": "Ch6", "unlockedAtStart": false },
+    { "id": "R6_ryokan", "name": "月见庄", "chapter": "Ch6-7", "unlockedAtStart": false },
+    { "id": "R7_shrine", "name": "神社", "chapter": "Ch8", "unlockedAtStart": false },
+    { "id": "R8_festival_plaza", "name": "夏祭广场", "chapter": "Ch8", "unlockedAtStart": false },
+    { "id": "R9_mountain_source", "name": "温泉源头", "chapter": "S2", "unlockedAtStart": false }
+  ],
+  "startingBoard": [
+    { "x": 3, "y": 4, "item": "gen_toolbox" },
+    { "x": 2, "y": 4, "item": "tool_01" },
+    { "x": 4, "y": 4, "item": "tool_01" }
+  ]
+}

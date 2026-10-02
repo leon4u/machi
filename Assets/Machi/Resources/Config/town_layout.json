@@ -1,0 +1,4783 @@
+{
+ "note": "Unity coords: x=east, y=up, z=north. Assets face -Z. rot_y in degrees.",
+ "regions": {
+  "R1_station": "Ch1",
+  "R2_shop_street_front": "Ch1-2",
+  "R3_public_bath": "Ch3",
+  "R4_shop_street_rear": "Ch5",
+  "R5_riverside": "Ch6",
+  "R6_ryokan": "Ch6-7",
+  "R7_shrine": "Ch8",
+  "R8_festival_plaza": "Ch8",
+  "R9_mountain_source": "S2"
+ },
+ "instances": [
+  {
+   "asset": "rail_platform",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -55.0,
+     21.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -55.0,
+     0.0,
+     21.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -95.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -95.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -85.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -85.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -75.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -75.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -65.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -65.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -55.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -55.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -45.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -45.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "rail_track",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -35.0,
+     24.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -35.0,
+     0.0,
+     24.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "station_waiting_room_s0",
+   "region": "R1_station",
+   "tag": "restorable:station_waiting_room",
+   "blender": {
+    "pos": [
+     -55.0,
+     15.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -55.0,
+     0.0,
+     15.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "station_sign_s0",
+   "region": "R1_station",
+   "tag": "restorable:station_sign",
+   "blender": {
+    "pos": [
+     -50.0,
+     11.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -50.0,
+     0.0,
+     11.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "office_hut_s0",
+   "region": "R1_station",
+   "tag": "restorable:office_hut",
+   "blender": {
+    "pos": [
+     -61.0,
+     9.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -61.0,
+     0.0,
+     9.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "station_bus_stop",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -45.0,
+     5.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -45.0,
+     0.0,
+     5.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_bench",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -58.0,
+     6.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -58.0,
+     0.0,
+     6.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_utility_pole",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -66.0,
+     12.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -66.0,
+     0.0,
+     12.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_vending_machine",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -47.5,
+     14.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -47.5,
+     0.0,
+     14.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_weeds",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -64.0,
+     6.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -64.0,
+     0.0,
+     6.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_weeds",
+   "region": "R1_station",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -49.0,
+     6.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -49.0,
+     0.0,
+     6.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "chizurudo_s0",
+   "region": "R2_shop_street_front",
+   "tag": "restorable:chizurudo",
+   "blender": {
+    "pos": [
+     -35.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -35.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "harue_general_store",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -26.5,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -26.5,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "shop_empty_a",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "shop_empty_b",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -11.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -11.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "house_generic",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -35.0,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     -35.0,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "shop_empty_a",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -26.5,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     -26.5,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "house_generic",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -17.0,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     -17.0,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "prop_street_lamp",
+   "region": "R2_shop_street_front",
+   "tag": "lamp",
+   "blender": {
+    "pos": [
+     -40.0,
+     13.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -40.0,
+     0.0,
+     13.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_street_lamp",
+   "region": "R2_shop_street_front",
+   "tag": "lamp",
+   "blender": {
+    "pos": [
+     -28.0,
+     13.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -28.0,
+     0.0,
+     13.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_street_lamp",
+   "region": "R2_shop_street_front",
+   "tag": "lamp",
+   "blender": {
+    "pos": [
+     -16.0,
+     13.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -16.0,
+     0.0,
+     13.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_street_lamp",
+   "region": "R2_shop_street_front",
+   "tag": "lamp",
+   "blender": {
+    "pos": [
+     -4.0,
+     13.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -4.0,
+     0.0,
+     13.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_utility_pole",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -36.0,
+     6.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -36.0,
+     0.0,
+     6.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_utility_pole",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -21.0,
+     6.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -21.0,
+     0.0,
+     6.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_utility_pole",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -8.0,
+     6.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -8.0,
+     0.0,
+     6.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_planter",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -22.5,
+     13.2,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -22.5,
+     0.0,
+     13.2
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "prop_weeds",
+   "region": "R2_shop_street_front",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -14.0,
+     13.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -14.0,
+     0.0,
+     13.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_bathhouse",
+   "region": "R3_public_bath",
+   "tag": "",
+   "blender": {
+    "pos": [
+     42.0,
+     20.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     42.0,
+     0.0,
+     20.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shop_diner",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     6.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     6.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shop_teahouse",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     15.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     15.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shop_generic",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.0,
+     17.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     24.0,
+     0.0,
+     17.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shop_souvenir",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     6.0,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     6.0,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "bo_shop_barber",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     15.0,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     15.0,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "bo_shop_generic",
+   "region": "R4_shop_street_rear",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.0,
+     3.0,
+     0.0
+    ],
+    "rot_z_deg": 180
+   },
+   "unity": {
+    "pos": [
+     24.0,
+     0.0,
+     3.0
+    ],
+    "rot_y_deg": 180
+   }
+  },
+  {
+   "asset": "bo_river_warehouse",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -28.0,
+     -12.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -28.0,
+     0.0,
+     -12.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_stone_bridge",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.0,
+     -24.0,
+     -0.3
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.0,
+     -0.3,
+     -24.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -55.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -55.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -46.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -46.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -37.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -37.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -28.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -28.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -19.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -19.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -10.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -10.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -1.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -1.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     8.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     8.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_sakura",
+   "region": "R5_riverside",
+   "tag": "",
+   "blender": {
+    "pos": [
+     17.0,
+     -12.8,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     17.0,
+     0.0,
+     -12.8
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_ryokan",
+   "region": "R6_ryokan",
+   "tag": "",
+   "blender": {
+    "pos": [
+     44.0,
+     -3.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     44.0,
+     0.0,
+     -3.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_festival_stage",
+   "region": "R8_festival_plaza",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.0,
+     -41.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.0,
+     0.0,
+     -41.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_torii",
+   "region": "R7_shrine",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.0,
+     -44.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.0,
+     0.0,
+     -44.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shrine_stairs",
+   "region": "R7_shrine",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.0,
+     -45.5,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.0,
+     0.0,
+     -45.5
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_shrine_honden",
+   "region": "R7_shrine",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.0,
+     -62.0,
+     7.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.0,
+     7.0,
+     -62.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "bo_spring_source_hut",
+   "region": "R9_mountain_source",
+   "tag": "",
+   "blender": {
+    "pos": [
+     40.0,
+     52.0,
+     11.13
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     40.0,
+     11.13,
+     52.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.089,
+     64.188,
+     17.33
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     24.089,
+     17.33,
+     64.188
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     57.858,
+     71.813,
+     21.651
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     57.858,
+     21.651,
+     71.813
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     47.02,
+     71.048,
+     21.2
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     47.02,
+     21.2,
+     71.048
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -92.315,
+     53.694,
+     17.926
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -92.315,
+     17.926,
+     53.694
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     86.898,
+     60.661,
+     18.795
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     86.898,
+     18.795,
+     60.661
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     78.576,
+     40.302,
+     4.747
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     78.576,
+     4.747,
+     40.302
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -6.062,
+     45.37,
+     7.026
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -6.062,
+     7.026,
+     45.37
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     8.577,
+     57.81,
+     13.847
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     8.577,
+     13.847,
+     57.81
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -95.43,
+     44.236,
+     15.046
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -95.43,
+     15.046,
+     44.236
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -43.221,
+     70.821,
+     21.318
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -43.221,
+     21.318,
+     70.821
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     52.082,
+     42.065,
+     5.4
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     52.082,
+     5.4,
+     42.065
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     58.241,
+     41.273,
+     4.957
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     58.241,
+     4.957,
+     41.273
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     23.021,
+     40.815,
+     4.724
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     23.021,
+     4.724,
+     40.815
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -97.652,
+     69.113,
+     29.983
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -97.652,
+     29.983,
+     69.113
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -56.947,
+     44.188,
+     6.869
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -56.947,
+     6.869,
+     44.188
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     94.555,
+     69.151,
+     27.599
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     94.555,
+     27.599,
+     69.151
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -41.296,
+     72.536,
+     22.639
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -41.296,
+     22.639,
+     72.536
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     7.688,
+     61.758,
+     16.451
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     7.688,
+     16.451,
+     61.758
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -57.863,
+     71.757,
+     21.985
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -57.863,
+     21.985,
+     71.757
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     77.173,
+     47.354,
+     8.459
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     77.173,
+     8.459,
+     47.354
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -27.207,
+     42.306,
+     5.592
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -27.207,
+     5.592,
+     42.306
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -69.442,
+     38.475,
+     3.677
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -69.442,
+     3.677,
+     38.475
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -38.934,
+     58.918,
+     15.111
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -38.934,
+     15.111,
+     58.918
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -97.337,
+     61.762,
+     25.398
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -97.337,
+     25.398,
+     61.762
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -31.772,
+     47.778,
+     8.864
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -31.772,
+     8.864,
+     47.778
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     62.43,
+     54.268,
+     12.11
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     62.43,
+     12.11,
+     54.268
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -36.105,
+     54.286,
+     11.933
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -36.105,
+     11.933,
+     54.286
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     93.12,
+     36.869,
+     9.291
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     93.12,
+     9.291,
+     36.869
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     48.96,
+     68.105,
+     19.673
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     48.96,
+     19.673,
+     68.105
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -94.459,
+     65.934,
+     26.295
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -94.459,
+     26.295,
+     65.934
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -26.228,
+     57.984,
+     14.61
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -26.228,
+     14.61,
+     57.984
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -96.221,
+     37.776,
+     11.684
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -96.221,
+     11.684,
+     37.776
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -62.54,
+     72.297,
+     22.029
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -62.54,
+     22.029,
+     72.297
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -59.482,
+     64.718,
+     17.928
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -59.482,
+     17.928,
+     64.718
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     84.212,
+     71.798,
+     23.521
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     84.212,
+     23.521,
+     71.798
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -30.501,
+     49.482,
+     9.783
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -30.501,
+     9.783,
+     49.482
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     4.842,
+     65.473,
+     18.51
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     4.842,
+     18.51,
+     65.473
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -76.822,
+     64.439,
+     17.837
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -76.822,
+     17.837,
+     64.439
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     58.256,
+     68.668,
+     20.058
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     58.256,
+     20.058,
+     68.668
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -90.82,
+     71.94,
+     27.244
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -90.82,
+     27.244,
+     71.94
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -80.129,
+     48.948,
+     9.28
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -80.129,
+     9.28,
+     48.948
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     21.722,
+     70.887,
+     21.419
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     21.722,
+     21.419,
+     70.887
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -31.368,
+     71.12,
+     21.248
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -31.368,
+     21.248,
+     71.12
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     8.848,
+     47.873,
+     8.57
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     8.848,
+     8.57,
+     47.873
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -35.907,
+     42.744,
+     5.616
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -35.907,
+     5.616,
+     42.744
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -82.674,
+     41.657,
+     5.479
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -82.674,
+     5.479,
+     41.657
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -66.34,
+     37.845,
+     3.012
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -66.34,
+     3.012,
+     37.845
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     95.393,
+     56.274,
+     21.755
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     95.393,
+     21.755,
+     56.274
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.446,
+     45.019,
+     7.201
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.446,
+     7.201,
+     45.019
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     18.416,
+     67.399,
+     19.268
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     18.416,
+     19.268,
+     67.399
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -8.69,
+     52.027,
+     10.905
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -8.69,
+     10.905,
+     52.027
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -87.081,
+     70.811,
+     24.018
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -87.081,
+     24.018,
+     70.811
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -91.587,
+     54.755,
+     18.066
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -91.587,
+     18.066,
+     54.755
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     66.332,
+     40.962,
+     4.663
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     66.332,
+     4.663,
+     40.962
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     45.406,
+     72.092,
+     22.385
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     45.406,
+     22.385,
+     72.092
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     25.558,
+     65.944,
+     18.723
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     25.558,
+     18.723,
+     65.944
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -77.1,
+     52.513,
+     11.593
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -77.1,
+     11.593,
+     52.513
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -68.748,
+     68.1,
+     19.705
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -68.748,
+     19.705,
+     68.1
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -40.217,
+     53.22,
+     11.304
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -40.217,
+     11.304,
+     53.22
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     97.863,
+     68.386,
+     29.286
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     97.863,
+     29.286,
+     68.386
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     93.297,
+     53.235,
+     18.819
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     93.297,
+     18.819,
+     53.235
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -2.321,
+     63.721,
+     17.088
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -2.321,
+     17.088,
+     63.721
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -4.108,
+     47.059,
+     8.378
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -4.108,
+     8.378,
+     47.059
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.857,
+     41.567,
+     5.04
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.857,
+     5.04,
+     41.567
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -24.108,
+     73.559,
+     22.648
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -24.108,
+     22.648,
+     73.559
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     90.124,
+     59.825,
+     19.85
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     90.124,
+     19.85,
+     59.825
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -0.133,
+     48.862,
+     9.243
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -0.133,
+     9.243,
+     48.862
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -80.529,
+     46.348,
+     7.555
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -80.529,
+     7.555,
+     46.348
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     55.276,
+     68.961,
+     20.313
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     55.276,
+     20.313,
+     68.961
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -27.18,
+     65.869,
+     18.896
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -27.18,
+     18.896,
+     65.869
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     53.88,
+     62.395,
+     16.807
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     53.88,
+     16.807,
+     62.395
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     32.148,
+     64.866,
+     17.864
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     32.148,
+     17.864,
+     64.866
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -26.767,
+     62.77,
+     16.942
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -26.767,
+     16.942,
+     62.77
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -42.953,
+     54.456,
+     12.386
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -42.953,
+     12.386,
+     54.456
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     52.871,
+     62.254,
+     16.816
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     52.871,
+     16.816,
+     62.254
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -40.405,
+     71.931,
+     21.624
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -40.405,
+     21.624,
+     71.931
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     29.34,
+     58.065,
+     14.647
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     29.34,
+     14.647,
+     58.065
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -95.73,
+     56.786,
+     22.124
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -95.73,
+     22.124,
+     56.786
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -48.864,
+     61.522,
+     16.556
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -48.864,
+     16.556,
+     61.522
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -7.264,
+     67.034,
+     19.172
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -7.264,
+     19.172,
+     67.034
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     28.898,
+     66.31,
+     18.502
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     28.898,
+     18.502,
+     66.31
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -29.815,
+     60.474,
+     15.922
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -29.815,
+     15.922,
+     60.474
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     46.614,
+     67.471,
+     19.306
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     46.614,
+     19.306,
+     67.471
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -29.391,
+     68.029,
+     19.452
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -29.391,
+     19.452,
+     68.029
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     72.503,
+     62.157,
+     16.25
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     72.503,
+     16.25,
+     62.157
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     93.32,
+     72.348,
+     28.625
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     93.32,
+     28.625,
+     72.348
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     3.555,
+     56.115,
+     13.406
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     3.555,
+     13.406,
+     56.115
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -65.43,
+     67.792,
+     19.475
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -65.43,
+     19.475,
+     67.792
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     85.727,
+     54.135,
+     14.599
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     85.727,
+     14.599,
+     54.135
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     45.149,
+     42.529,
+     5.941
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     45.149,
+     5.941,
+     42.529
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     54.953,
+     58.072,
+     13.993
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     54.953,
+     13.993,
+     58.072
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     32.449,
+     51.99,
+     10.986
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     32.449,
+     10.986,
+     51.99
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.252,
+     65.439,
+     18.037
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     24.252,
+     18.037,
+     65.439
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     26.826,
+     63.376,
+     17.416
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     26.826,
+     17.416,
+     63.376
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -92.586,
+     42.081,
+     11.816
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -92.586,
+     11.816,
+     42.081
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -11.551,
+     60.704,
+     15.479
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -11.551,
+     15.479,
+     60.704
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -55.069,
+     62.066,
+     16.199
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -55.069,
+     16.199,
+     62.066
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     25.65,
+     37.591,
+     3.266
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     25.65,
+     3.266,
+     37.591
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -5.569,
+     44.597,
+     7.296
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -5.569,
+     7.296,
+     44.597
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -87.388,
+     41.074,
+     8.334
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -87.388,
+     8.334,
+     41.074
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -35.799,
+     42.899,
+     5.749
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -35.799,
+     5.749,
+     42.899
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -60.101,
+     37.355,
+     3.231
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -60.101,
+     3.231,
+     37.355
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -6.795,
+     50.451,
+     10.044
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -6.795,
+     10.044,
+     50.451
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     21.912,
+     58.426,
+     14.151
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     21.912,
+     14.151,
+     58.426
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -51.382,
+     70.321,
+     21.43
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -51.382,
+     21.43,
+     70.321
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -97.871,
+     51.404,
+     20.244
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -97.871,
+     20.244,
+     51.404
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.288,
+     -68.879,
+     2.847
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.288,
+     2.847,
+     -68.879
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -28.096,
+     -55.396,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -28.096,
+     0.0,
+     -55.396
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -12.567,
+     -80.846,
+     8.873
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -12.567,
+     8.873,
+     -80.846
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     1.814,
+     -78.966,
+     7.982
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     1.814,
+     7.982,
+     -78.966
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -0.146,
+     -51.334,
+     5.999
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -0.146,
+     5.999,
+     -51.334
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     14.111,
+     -68.589,
+     1.913
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     14.111,
+     1.913,
+     -68.589
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     13.779,
+     -61.447,
+     0.82
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     13.779,
+     0.82,
+     -61.447
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -12.833,
+     -77.452,
+     6.84
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -12.833,
+     6.84,
+     -77.452
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     22.433,
+     -51.024,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     22.433,
+     0.0,
+     -51.024
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     1.517,
+     -70.764,
+     5.318
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     1.517,
+     5.318,
+     -70.764
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     18.608,
+     -81.97,
+     9.779
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     18.608,
+     9.779,
+     -81.97
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -28.525,
+     -63.894,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -28.525,
+     0.0,
+     -63.894
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     1.91,
+     -77.498,
+     7.072
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     1.91,
+     7.072,
+     -77.498
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     2.767,
+     -53.479,
+     6.077
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     2.767,
+     6.077,
+     -53.479
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -12.449,
+     -68.186,
+     6.003
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -12.449,
+     6.003,
+     -68.186
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -21.42,
+     -72.672,
+     3.899
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -21.42,
+     3.899,
+     -72.672
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     23.347,
+     -69.847,
+     2.267
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     23.347,
+     2.267,
+     -69.847
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     22.668,
+     -52.76,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     22.668,
+     0.0,
+     -52.76
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     0.749,
+     -73.686,
+     4.81
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     0.749,
+     4.81,
+     -73.686
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     23.859,
+     -66.118,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     23.859,
+     0.0,
+     -66.118
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -10.07,
+     -71.787,
+     5.021
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -10.07,
+     5.021,
+     -71.787
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.057,
+     -66.264,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     24.057,
+     0.0,
+     -66.264
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -17.816,
+     -66.738,
+     3.541
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -17.816,
+     3.541,
+     -66.738
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -27.687,
+     -62.106,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -27.687,
+     0.0,
+     -62.106
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -8.392,
+     -72.621,
+     5.076
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -8.392,
+     5.076,
+     -72.621
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     11.902,
+     -55.542,
+     1.949
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     11.902,
+     1.949,
+     -55.542
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -34.208,
+     -64.958,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -34.208,
+     0.0,
+     -64.958
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.573,
+     -52.072,
+     2.076
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.573,
+     2.076,
+     -52.072
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     11.914,
+     -74.139,
+     4.778
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     11.914,
+     4.778,
+     -74.139
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -18.939,
+     -77.048,
+     6.69
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -18.939,
+     6.69,
+     -77.048
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     24.33,
+     -72.618,
+     4.198
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     24.33,
+     4.198,
+     -72.618
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     9.608,
+     -78.218,
+     7.706
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     9.608,
+     7.706,
+     -78.218
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     10.624,
+     -72.378,
+     4.09
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     10.624,
+     4.09,
+     -72.378
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -17.191,
+     -65.044,
+     4.466
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -17.191,
+     4.466,
+     -65.044
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     9.701,
+     -63.094,
+     3.569
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     9.701,
+     3.569,
+     -63.094
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -32.814,
+     -73.922,
+     4.968
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -32.814,
+     4.968,
+     -73.922
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     18.276,
+     -64.541,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     18.276,
+     0.0,
+     -64.541
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_cedar",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -34.126,
+     -57.092,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -34.126,
+     0.0,
+     -57.092
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -14.165,
+     -57.823,
+     6.717
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -14.165,
+     6.717,
+     -57.823
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     40.804,
+     -55.446,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     40.804,
+     0.0,
+     -55.446
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -22.447,
+     -65.542,
+     1.677
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -22.447,
+     1.677,
+     -65.542
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     68.973,
+     -73.748,
+     5.043
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     68.973,
+     5.043,
+     -73.748
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -39.896,
+     -47.139,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -39.896,
+     0.0,
+     -47.139
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -85.053,
+     -46.876,
+     1.651
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -85.053,
+     1.651,
+     -46.876
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     38.146,
+     -63.822,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     38.146,
+     0.0,
+     -63.822
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -41.873,
+     -49.209,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -41.873,
+     0.0,
+     -49.209
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     80.492,
+     -76.007,
+     5.919
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     80.492,
+     5.919,
+     -76.007
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -4.231,
+     -58.938,
+     7.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -4.231,
+     7.0,
+     -58.938
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -0.454,
+     -68.109,
+     7.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -0.454,
+     7.0,
+     -68.109
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -67.909,
+     -57.394,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -67.909,
+     0.0,
+     -57.394
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     61.117,
+     -79.126,
+     7.691
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     61.117,
+     7.691,
+     -79.126
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -52.916,
+     -47.577,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -52.916,
+     0.0,
+     -47.577
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     57.183,
+     -54.129,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     57.183,
+     0.0,
+     -54.129
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -92.992,
+     -51.651,
+     6.969
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -92.992,
+     6.969,
+     -51.651
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     93.822,
+     -40.07,
+     6.839
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     93.822,
+     6.839,
+     -40.07
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     39.445,
+     -79.946,
+     8.663
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     39.445,
+     8.663,
+     -79.946
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     67.044,
+     -72.792,
+     3.763
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     67.044,
+     3.763,
+     -72.792
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -70.0,
+     15.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -70.0,
+     0.0,
+     15.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -72.0,
+     2.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -72.0,
+     0.0,
+     2.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -42.0,
+     -6.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -42.0,
+     0.0,
+     -6.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     30.0,
+     -1.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     30.0,
+     0.0,
+     -1.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     -20.0,
+     -6.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     -20.0,
+     0.0,
+     -6.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     55.0,
+     22.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     55.0,
+     0.0,
+     22.0
+    ],
+    "rot_y_deg": 0
+   }
+  },
+  {
+   "asset": "tree_round",
+   "region": "scenery",
+   "tag": "",
+   "blender": {
+    "pos": [
+     60.0,
+     10.0,
+     0.0
+    ],
+    "rot_z_deg": 0
+   },
+   "unity": {
+    "pos": [
+     60.0,
+     0.0,
+     10.0
+    ],
+    "rot_y_deg": 0
+   }
+  }
+ ]
+}
