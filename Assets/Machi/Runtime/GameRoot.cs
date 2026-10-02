@@ -105,7 +105,7 @@ namespace Machi
             var root = (RectTransform)canvasGo.transform;
 
             // Board screen (covers the town while open)
-            _boardScreen = UiKit.Panel("BoardScreen", root, UiKit.Cream).rectTransform.Anchor(0, 0, 1, 0.9f);
+            _boardScreen = UiKit.Panel("BoardScreen", root, UiKit.Cream).rectTransform.Anchor(0, 0, 1, 0.93f);
             var ordersArea = UiKit.Rect("OrdersArea", _boardScreen).Anchor(0.02f, 0.76f, 0.98f, 0.99f);
             var boardArea = UiKit.Rect("BoardArea", _boardScreen).Anchor(0, 0.1f, 1, 0.76f);
             var dragLayer = UiKit.Rect("DragLayer", root).Anchor(0, 0, 1, 1);

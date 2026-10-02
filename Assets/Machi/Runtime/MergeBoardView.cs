@@ -12,7 +12,6 @@ namespace Machi
         Game _game;
         ItemVisuals _visuals;
         RectTransform _grid;
-        RectTransform _area;
         RectTransform _dragLayer;
         CellView[] _cells;
         Text _info;
@@ -22,17 +21,20 @@ namespace Machi
             _game = game;
             _visuals = visuals;
             _dragLayer = dragLayer;
-            _area = area;
             var b = game.Board;
 
             _info = UiKit.Label("Info", area, "点击工具箱产出物品，拖动相同物品合成", 30, UiKit.Ink);
             ((RectTransform)_info.transform).Anchor(0, 0.94f, 1, 1);
 
-            // Square grid centred in the remaining space.
-            _grid = UiKit.Rect("Grid", area);
-            _grid.anchorMin = _grid.anchorMax = new Vector2(0.5f, 0.47f);
-            float cell = 112f, gap = 8f;
-            _grid.sizeDelta = new Vector2(b.Width * (cell + gap), b.Height * (cell + gap));
+            // Grid scaled to fit the space below the info line (leaves room for the 16px frame).
+            var fit = UiKit.Rect("GridArea", area).Anchor(0.02f, 0.01f, 0.98f, 0.93f);
+            fit.offsetMin = new Vector2(16, 16);
+            fit.offsetMax = new Vector2(-16, -16);
+            _grid = UiKit.Rect("Grid", fit);
+            var aspect = _grid.gameObject.AddComponent<AspectRatioFitter>();
+            aspect.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
+            aspect.aspectRatio = (float)b.Width / b.Height;
+            float gap = 4f;
             var frame = UiKit.Panel("Frame", _grid, UiKit.Wood);
             ((RectTransform)frame.transform).Anchor(0, 0, 1, 1);
             ((RectTransform)frame.transform).offsetMin = new Vector2(-16, -16);
@@ -44,10 +46,11 @@ namespace Machi
                 {
                     var bg = UiKit.Panel($"Cell_{x}_{y}", _grid, UiKit.Tile);
                     var rt = (RectTransform)bg.transform;
-                    rt.anchorMin = rt.anchorMax = new Vector2(0, 1);   // y = 0 is the top row
-                    rt.pivot = new Vector2(0, 1);
-                    rt.sizeDelta = new Vector2(cell, cell);
-                    rt.anchoredPosition = new Vector2(gap / 2 + x * (cell + gap), -gap / 2 - y * (cell + gap));
+                    // y = 0 is the top row
+                    rt.Anchor((float)x / b.Width, 1f - (float)(y + 1) / b.Height,
+                              (float)(x + 1) / b.Width, 1f - (float)y / b.Height);
+                    rt.offsetMin = new Vector2(gap, gap);
+                    rt.offsetMax = new Vector2(-gap, -gap);
                     var cv = bg.gameObject.AddComponent<CellView>();
                     cv.Init(this, x, y);
                     _cells[y * b.Width + x] = cv;
@@ -61,17 +64,6 @@ namespace Machi
         void OnDestroy()
         {
             if (_game != null) _game.Board.CellChanged -= Refresh;
-        }
-
-        // Shrink the grid to fit its area (below the info line) so a wide or short window
-        // never pushes it over the order cards.
-        void LateUpdate()
-        {
-            if (_grid == null) return;
-            var avail = _area.rect.size;
-            float frame = 32f;
-            float s = Mathf.Min(1f, avail.x / (_grid.sizeDelta.x + frame), avail.y * 0.92f / (_grid.sizeDelta.y + frame));
-            if (s > 0f && Mathf.Abs(_grid.localScale.x - s) > 0.001f) _grid.localScale = new Vector3(s, s, 1f);
         }
 
         void Refresh(int x, int y)
@@ -168,7 +160,7 @@ namespace Machi
         {
             if (!_hasItem) return;
             // Switch from stretch anchors to a fixed size so the item keeps its size on the drag layer.
-            var size = _item.rect.size * (_item.lossyScale.x / _board.DragLayer.lossyScale.x);
+            var size = _item.rect.size;
             var world = _item.position;
             _item.anchorMin = _item.anchorMax = new Vector2(0.5f, 0.5f);
             _item.sizeDelta = size;
