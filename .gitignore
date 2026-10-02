@@ -1,0 +1,37 @@
+# Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+*.csproj
+*.sln
+*.suo
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.apk
+*.aab
+*.unitypackage
+crashlytics-build.properties
+.vs/
+.vscode/
+.idea/
+.DS_Store
+
+# Core test runner build output (the test csproj itself is kept)
+!/Tests/CoreTests/CoreTests.csproj
+/Tests/CoreTests/bin/
+/Tests/CoreTests/obj/
+
+# Blender
+*.blend1
