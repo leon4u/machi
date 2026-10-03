@@ -5,6 +5,15 @@ using System.Linq;
 namespace Machi.Core
 {
     public enum TapResult { NotGenerator, NoEnergy, BoardFull, Produced }
+
+    public enum HintKind { None, Merge, Generator }
+
+    /// <summary>What the board should nudge the player toward: a pair to merge (A + B) or a generator (A).</summary>
+    public struct BoardHint
+    {
+        public HintKind Kind;
+        public int Ax, Ay, Bx, By;
+    }
     public enum RestoreResult { Unknown, MaxStage, RegionLocked, NotEnoughMaterials, Restored }
 
     /// <summary>
@@ -139,6 +148,43 @@ namespace Machi.Core
                 if (r < 0) return o.item;
             }
             return gen.outputs[0].item;
+        }
+
+        /// <summary>Item ids that an active order still asks for.</summary>
+        public HashSet<string> NeededItems()
+        {
+            var set = new HashSet<string>();
+            foreach (var o in ActiveOrders())
+                foreach (var r in o.requires ?? new ItemCount[0]) set.Add(r.item);
+            return set;
+        }
+
+        /// <summary>
+        /// A merge that does not eat items an order is waiting for, else a generator that can produce now.
+        /// </summary>
+        public BoardHint FindHint()
+        {
+            var need = new Dictionary<string, int>();
+            foreach (var o in ActiveOrders())
+                foreach (var r in o.requires ?? new ItemCount[0])
+                    need[r.item] = (need.TryGetValue(r.item, out var n) ? n : 0) + r.count;
+
+            var seen = new Dictionary<string, (int x, int y)>();
+            foreach (var (x, y, id) in Board.All())
+            {
+                if (!Cfg.Items.TryGetValue(id, out var def) || string.IsNullOrEmpty(def.next)) continue;
+                if (Board.Count(id) - (need.TryGetValue(id, out var keep) ? keep : 0) < 2) continue;
+                if (seen.TryGetValue(id, out var a))
+                    return new BoardHint { Kind = HintKind.Merge, Ax = a.x, Ay = a.y, Bx = x, By = y };
+                seen[id] = (x, y);
+            }
+
+            if (Board.CountEmpty() > 0)
+                foreach (var (x, y, id) in Board.All())
+                    if (Cfg.Generators.TryGetValue(id, out var gen) && Energy >= gen.energyCost)
+                        return new BoardHint { Kind = HintKind.Generator, Ax = x, Ay = y, Bx = -1, By = -1 };
+
+            return new BoardHint { Kind = HintKind.None, Ax = -1, Ay = -1, Bx = -1, By = -1 };
         }
 
         public MoveResult MoveItem(int fx, int fy, int tx, int ty)

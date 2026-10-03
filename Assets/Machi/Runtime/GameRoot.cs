@@ -21,6 +21,9 @@ namespace Machi
         Text _coins, _materials, _energy, _revival, _toast, _bpTitle, _bpBody;
         Button _switchBtn, _bpRestore;
         RestorableBuilding _selected;
+        RectTransform _uiRoot, _markerLayer;
+        readonly System.Collections.Generic.Dictionary<string, RectTransform> _markers =
+            new System.Collections.Generic.Dictionary<string, RectTransform>();
         float _toastUntil, _saveTimer;
         bool _boardOpen;
 
@@ -77,8 +80,32 @@ namespace Machi
         {
             Game.TickEnergy(SaveStore.Now);
             if (_toast != null && _toast.gameObject.activeSelf && Time.time > _toastUntil) _toast.gameObject.SetActive(false);
+            UpdateMarkers();
             _saveTimer += Time.unscaledDeltaTime;
             if (_saveTimer > 10f) { _saveTimer = 0; Save(); }
+        }
+
+        /// <summary>Float a "可修复" tag above every building the player can restore right now.</summary>
+        void UpdateMarkers()
+        {
+            if (_markerLayer == null) return;
+            _markerLayer.gameObject.SetActive(!_boardOpen);
+            if (_boardOpen) return;
+            var cam = Camera.main;
+            float bob = 8f * Mathf.Abs(Mathf.Sin(Time.time * 3f));
+            foreach (var b in _town.Buildings)
+            {
+                var m = _markers[b.Id];
+                int cost = Game.NextStageCost(b.Id);
+                bool show = cost >= 0 && Game.Materials >= cost
+                            && Game.Cfg.Buildings.TryGetValue(b.Id, out var def) && Game.IsRegionUnlocked(def.region);
+                Vector3 screen = show ? cam.WorldToScreenPoint(b.Top) : Vector3.zero;
+                show &= screen.z > 0;
+                m.gameObject.SetActive(show);
+                if (!show) continue;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_uiRoot, screen, null, out var local);
+                m.localPosition = local + new Vector2(0, 50f + bob);
+            }
         }
 
         void OnApplicationPause(bool paused) { if (paused) Save(); }
@@ -103,6 +130,20 @@ namespace Machi
             scaler.referenceResolution = new Vector2(1080, 1920);
             scaler.matchWidthOrHeight = 0.5f;
             var root = (RectTransform)canvasGo.transform;
+            _uiRoot = root;
+
+            // "Can restore" markers over town buildings (first child, so every panel draws on top)
+            _markerLayer = UiKit.Rect("TownMarkers", root).Anchor(0, 0, 1, 1);
+            foreach (var b in _town.Buildings)
+            {
+                var m = UiKit.Panel("Marker_" + b.Id, _markerLayer, UiKit.Vermilion);
+                m.raycastTarget = false;
+                m.rectTransform.sizeDelta = new Vector2(150, 56);
+                var t = UiKit.Label("Text", m.rectTransform, "可修复", 30, Color.white);
+                ((RectTransform)t.transform).Anchor(0, 0, 1, 1);
+                m.gameObject.SetActive(false);
+                _markers[b.Id] = m.rectTransform;
+            }
 
             // Board screen (covers the town while open)
             _boardScreen = UiKit.Panel("BoardScreen", root, UiKit.Cream).rectTransform.Anchor(0, 0, 1, 0.93f);

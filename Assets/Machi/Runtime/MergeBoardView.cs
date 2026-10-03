@@ -15,6 +15,12 @@ namespace Machi
         RectTransform _dragLayer;
         CellView[] _cells;
         Text _info;
+        RectTransform _arrow;
+        float _idle;
+        bool _hintsDirty = true;
+        BoardHint _hint;
+
+        const float HintDelay = 3f;
 
         public void Build(Game game, ItemVisuals visuals, RectTransform area, RectTransform dragLayer)
         {
@@ -56,19 +62,88 @@ namespace Machi
                     _cells[y * b.Width + x] = cv;
                 }
 
+            // "Tap here" marker shown over the generator when there is nothing to merge.
+            var arrowBg = UiKit.Panel("TapHint", _grid, UiKit.Vermilion);
+            arrowBg.raycastTarget = false;
+            _arrow = arrowBg.rectTransform;
+            var arrowText = UiKit.Label("Text", _arrow, "点我", 26, Color.white);
+            ((RectTransform)arrowText.transform).Anchor(0, 0, 1, 1);
+            _arrow.gameObject.SetActive(false);
+
             b.CellChanged += Refresh;
+            game.OrdersChanged += MarkHintsDirty;
+            game.WalletChanged += MarkHintsDirty;
             for (int y = 0; y < b.Height; y++)
                 for (int x = 0; x < b.Width; x++) Refresh(x, y);
         }
 
         void OnDestroy()
         {
-            if (_game != null) _game.Board.CellChanged -= Refresh;
+            if (_game == null) return;
+            _game.Board.CellChanged -= Refresh;
+            _game.OrdersChanged -= MarkHintsDirty;
+            _game.WalletChanged -= MarkHintsDirty;
+        }
+
+        void MarkHintsDirty() => _hintsDirty = true;
+
+        /// <summary>Any player action restarts the idle timer and hides the current hint.</summary>
+        internal void Poke()
+        {
+            _idle = 0;
+            ShowHint(false);
+        }
+
+        void Update()
+        {
+            if (_cells == null) return;
+            if (_hintsDirty)
+            {
+                _hintsDirty = false;
+                var needed = _game.NeededItems();
+                foreach (var c in _cells)
+                {
+                    var id = _game.Board.Get(c.X, c.Y);
+                    c.SetNeeded(id != null && needed.Contains(id));
+                }
+                _hint = _game.FindHint();
+                ShowHint(false);
+            }
+            _idle += Time.deltaTime;
+            if (_idle >= HintDelay) ShowHint(true);
+            if (_arrow.gameObject.activeSelf)
+                _arrow.anchoredPosition = new Vector2(0, 10f * Mathf.Abs(Mathf.Sin(Time.time * 4f)));
+        }
+
+        void ShowHint(bool on)
+        {
+            foreach (var c in _cells) c.SetPulse(false);
+            _arrow.gameObject.SetActive(false);
+            if (!on) return;
+            var b = _game.Board;
+            if (_hint.Kind == HintKind.Merge)
+            {
+                _cells[_hint.Ay * b.Width + _hint.Ax].SetPulse(true);
+                _cells[_hint.By * b.Width + _hint.Bx].SetPulse(true);
+            }
+            else if (_hint.Kind == HintKind.Generator)
+            {
+                _cells[_hint.Ay * b.Width + _hint.Ax].SetPulse(true);
+                // Sit in the row above the generator (or on it, for the top row).
+                int row = Mathf.Max(0, _hint.Ay - 1);
+                _arrow.anchorMin = new Vector2((float)_hint.Ax / b.Width, 1f - (float)(row + 1) / b.Height + 0.3f / b.Height);
+                _arrow.anchorMax = new Vector2((float)(_hint.Ax + 1) / b.Width, 1f - (float)row / b.Height - 0.2f / b.Height);
+                _arrow.offsetMin = _arrow.offsetMax = Vector2.zero;
+                _arrow.SetAsLastSibling();
+                _arrow.gameObject.SetActive(true);
+            }
         }
 
         void Refresh(int x, int y)
         {
             if (_cells == null) return;
+            _hintsDirty = true;
+            _idle = 0;
             _cells[y * _game.Board.Width + x].Show(_game.Board.Get(x, y), _visuals);
         }
 
@@ -78,6 +153,7 @@ namespace Machi
 
         internal void OnTap(CellView c)
         {
+            Poke();
             var id = _game.Board.Get(c.X, c.Y);
             if (id == null) return;
             if (_game.Cfg.IsGenerator(id))
@@ -119,12 +195,18 @@ namespace Machi
         Text _itemText;
         Image _badge;
         Text _badgeText;
-        bool _hasItem;
+        Image _needMark;
+        bool _hasItem, _pulse;
         Vector3 _popT = Vector3.one;
 
         public void Init(MergeBoardView board, int x, int y)
         {
             _board = board; X = x; Y = y;
+            // Green glow behind items an active order asks for.
+            _needMark = UiKit.Panel("Needed", transform, new Color(0.45f, 0.78f, 0.42f, 0.85f));
+            _needMark.raycastTarget = false;
+            ((RectTransform)_needMark.transform).Anchor(0, 0, 1, 1);
+            _needMark.gameObject.SetActive(false);
             _itemImage = UiKit.Panel("Item", transform, Color.clear);
             _item = (RectTransform)_itemImage.transform;
             _item.Anchor(0.06f, 0.06f, 0.94f, 0.94f);
@@ -159,10 +241,16 @@ namespace Machi
 
         public void Pop() => _popT = Vector3.one * 1.25f;
 
+        public void SetNeeded(bool on) => _needMark.gameObject.SetActive(on && _hasItem);
+
+        public void SetPulse(bool on) => _pulse = on && _hasItem;
+
         void Update()
         {
-            if (_item != null && _item.parent == transform)
-                _item.localScale = _popT = Vector3.Lerp(_popT, Vector3.one, Time.deltaTime * 12f);
+            if (_item == null || _item.parent != transform) return;
+            _popT = Vector3.Lerp(_popT, Vector3.one, Time.deltaTime * 12f);
+            float pulse = _pulse ? 1f + 0.1f * Mathf.Abs(Mathf.Sin(Time.time * 4f)) : 1f;
+            _item.localScale = _popT * pulse;
         }
 
         public void OnPointerClick(PointerEventData e)
@@ -172,6 +260,7 @@ namespace Machi
 
         public void OnBeginDrag(PointerEventData e)
         {
+            _board.Poke();
             if (!_hasItem) return;
             // Switch from stretch anchors to a fixed size so the item keeps its size on the drag layer.
             var size = _item.rect.size;

@@ -115,6 +115,8 @@ namespace Machi
             if (_buildings.TryGetValue(id, out var b)) b.SetStage(stage, true);
         }
 
+        public IEnumerable<RestorableBuilding> Buildings => _buildings.Values;
+
         public RestorableBuilding Find(string id) => _buildings.TryGetValue(id, out var b) ? b : null;
 
         /// <summary>Raycast from a screen point; returns the building under it, if any.</summary>
@@ -178,6 +180,8 @@ namespace Machi
     public class RestorableBuilding : MonoBehaviour
     {
         public string Id { get; private set; }
+        /// <summary>World point just above the roof of the active stage, for UI markers.</summary>
+        public Vector3 Top { get; private set; }
         List<GameObject> _stages;
         int _current = -1;
 
@@ -194,6 +198,14 @@ namespace Machi
             if (stage == _current) return;
             _current = stage;
             for (int i = 0; i < _stages.Count; i++) _stages[i].SetActive(i == stage);
+            var rends = _stages[stage].GetComponentsInChildren<Renderer>();
+            if (rends.Length > 0)
+            {
+                var bounds = rends[0].bounds;
+                foreach (var r in rends) bounds.Encapsulate(r.bounds);
+                Top = new Vector3(bounds.center.x, bounds.max.y, bounds.center.z);
+            }
+            else Top = transform.position;
             if (animate) StartCoroutine(Pop(_stages[stage].transform));
         }
 

@@ -73,6 +73,25 @@ static class Program
         Check(g.Restore("station_sign") == RestoreResult.NotEnoughMaterials, "not enough materials");
         Check(!g.Fulfill("o_sign"), "cannot fulfil without items");
 
+        // --- board hints
+        var gh = new Game(cfg, new FixedRandom());
+        gh.NewGame(0);
+        foreach (var c in gh.Board.All().ToList()) gh.Board.Set(c.x, c.y, null);
+        gh.Board.Set(0, 0, "gen_toolbox");
+        var hint = gh.FindHint();
+        Check(hint.Kind == HintKind.Generator && hint.Ax == 0 && hint.Ay == 0, "empty board points at generator");
+        gh.Board.Set(2, 2, "tool_01");
+        gh.Board.Set(4, 3, "tool_01");
+        hint = gh.FindHint();
+        Check(hint.Kind == HintKind.Merge && hint.Ax == 2 && hint.Ay == 2 && hint.Bx == 4 && hint.By == 3, "pair of tool_01 suggested");
+        gh.Board.Set(4, 3, "tool_02");
+        Check(gh.FindHint().Kind == HintKind.Generator, "single items give no merge hint");
+        Check(gh.NeededItems().Contains("tool_02"), "first order needs tool_02");
+        gh.Board.Set(5, 3, "tool_02");
+        Check(gh.FindHint().Kind == HintKind.Generator, "keeps the tool_02 the order needs");
+        gh.Board.Set(6, 3, "tool_02");
+        Check(gh.FindHint().Kind == HintKind.Merge, "spare tool_02 pair can merge");
+
         // --- region lock
         Check(!g.IsRegionUnlocked("R3_public_bath") && g.IsRegionUnlocked("R1_station"), "regions at start");
         Check(g.UnlockRegion("R3_public_bath") && !g.UnlockRegion("R3_public_bath"), "unlock once");
