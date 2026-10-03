@@ -117,6 +117,8 @@ namespace Machi
         RectTransform _item;
         Image _itemImage;
         Text _itemText;
+        Image _badge;
+        Text _badgeText;
         bool _hasItem;
         Vector3 _popT = Vector3.one;
 
@@ -129,6 +131,15 @@ namespace Machi
             _itemImage.raycastTarget = false;
             _itemText = UiKit.Label("Text", _item, "", 20, UiKit.Ink);
             ((RectTransform)_itemText.transform).Anchor(0, 0, 1, 1);
+            // Level badge in the bottom-right corner, shown once real art replaces the placeholder text.
+            _badge = UiKit.Panel("Badge", _item, UiKit.WoodDark);
+            _badge.raycastTarget = false;
+            ((RectTransform)_badge.transform).Anchor(0.66f, 0f, 1f, 0.34f);
+            _badgeText = UiKit.Label("Level", _badge.transform, "", 18, UiKit.Cream);
+            ((RectTransform)_badgeText.transform).Anchor(0, 0, 1, 1);
+            _badgeText.resizeTextForBestFit = true;
+            _badgeText.resizeTextMinSize = 8;
+            _badgeText.resizeTextMaxSize = 28;
         }
 
         public void Show(string id, ItemVisuals v)
@@ -141,6 +152,9 @@ namespace Machi
             _itemImage.color = sprite != null ? Color.white : v.PlaceholderColor(id);
             _itemText.text = sprite != null ? "" : v.PlaceholderText(id);
             _itemText.color = _board != null && id.StartsWith("gen_") ? Color.white : UiKit.Ink;
+            var level = sprite != null ? v.LevelBadge(id) : "";
+            _badge.gameObject.SetActive(level.Length > 0);
+            _badgeText.text = level;
         }
 
         public void Pop() => _popT = Vector3.one * 1.25f;

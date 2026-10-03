@@ -51,6 +51,12 @@ namespace Machi
             return id;
         }
 
+        /// <summary>Level number for the corner badge on item art; empty for generators.</summary>
+        public string LevelBadge(string id)
+        {
+            return _cfg.Items.TryGetValue(id ?? "", out var d) ? d.level.ToString() : "";
+        }
+
         public string DisplayName(string id)
         {
             if (_cfg.Generators.TryGetValue(id ?? "", out var g)) return g.name;
