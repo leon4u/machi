@@ -138,7 +138,7 @@ Game item icon: [物品描述]. Single object centered, occupying 80% of the fra
 ### 3.4 生产器（P0 ×1，P1 ×2）
 | 文件 | 描述 |
 |---|---|
-| gen_toolbox (P0) | `a sturdy old wooden toolbox with a rope handle, slightly worn, a small sparkle hinting it can be tapped` |
+| gen_toolbox (P0) | `a weathered old wooden toolbox with the lid closed, rusty iron latch, faded paper label, darker aged wood with chipped edges, a small sparkle hinting it can be tapped` (must look clearly older and closed, unlike the open brass-cornered item_tool_05) |
 | gen_ricebin (P1) | `a traditional wooden rice storage bin with a scoop on top` |
 | gen_linen (P1) | `a small wooden linen shelf stacked with towels` |
 
