@@ -1,7 +1,7 @@
 # 《温泉小镇复兴》2D 美术资产清单与 ChatGPT Prompt
 ### V0.1（对应 Vertical Slice + MVP：Ch1–Ch3）
 
-> 用法：先做第 1 节"风格锚点"，你满意并锁定后，后面每张图都把锚点图作为参考图一起发给 ChatGPT，并在 prompt 末尾附上第 1.2 节的「风格块」。
+> 用法：先做第 1 节"风格锚点"，你满意并锁定后，后面每张图都把锚点图作为参考图一起发给 ChatGPT，并在 prompt 末尾附上对应的风格块：角色、背景、CG 用第 1.2 节「插画风格块」，物品图标、生产器、UI 用第 1.2b 节「休闲图标风格块」。
 > 优先级：**P0 = Vertical Slice（First Hour）必须**，P1 = MVP（Ch2–Ch3）需要，P2 = 可延后。
 > 角色外观细节（发型、服装颜色）是我根据 Character Bible 补的建议，你可以改。
 
@@ -18,7 +18,7 @@
 | 剧情背景 / CG | 1536×1024 横图 | 不透明 | 1920×1280（放大）或原尺寸 | 竖屏游戏里会裁切中间，主体放中央 |
 | UI 面板 | 1024×1024 | 透明 | 九宫格切图 | 边角装饰放四角，中间留纯色 |
 
-文件命名：`类别_英文名_编号.png`，例如 `char_mio_neutral.png`、`item_tool_03.png`、`bg_office_messy.png`。
+文件命名：`类别_英文名_编号.png`，例如 `char_mio_neutral.png`、`bg_office_messy.png`。**Merge 棋盘上的物品和生产器例外：文件名必须等于游戏里的物品 id**（`tool_03.png`、`plank.png`、`gen_toolbox.png`），放进 `Assets/Machi/Resources/Items/`，否则游戏找不到图。
 
 ---
 
@@ -39,10 +39,18 @@
 | UI 主色（和纸米色） | #F7F0E3 |
 | UI 强调（朱红） | #D9614C |
 
-### 1.2 风格块（每个 prompt 末尾都附上）
+### 1.2 插画风格块（角色立绘、剧情背景、CG）
 
 ```
 Style: modern Japanese slice-of-life illustration, soft clean lineart, gentle cel shading with subtle watercolor texture, warm and calm mood, muted natural palette (warm wood #B9835A, off-white plaster #EFE6D6, slate blue roof #5D6B7A, warm lamp light #FFC56B, moss green #7FA36B), cozy healing atmosphere, not idol-like, not overly glamorous, realistic body proportions, natural hair colors.
+```
+
+### 1.2b 休闲图标风格块（Merge 物品、生产器、UI）
+
+参考日式休闲 / 合成手游的道具图标：圆润鼓鼓、Q 版比例、细节少、深棕粗描边、1～2 层平涂阴影、左上角糖果般的白色高光，缩到 64px 也一眼认得出。2026-10-03 由 Ang 试玩后决定：棋盘上不用写实手绘风，那种细节缩小后会糊。
+
+```
+Style: Japanese casual mobile merge game item icon, slightly chunky and rounded "puffy" proportions, simplified shapes with very few details, bold dark-brown outline (thick, even width), flat cel shading with only 1-2 shade tones, a soft glossy white highlight on the top-left, bright warm pastel colors with good saturation, cute and friendly kawaii feel, readable at 64px.
 ```
 
 ### 1.3 锚点图（先生成这 3 张，反复改到满意再继续）
@@ -50,19 +58,19 @@ Style: modern Japanese slice-of-life illustration, soft clean lineart, gentle ce
 **A1 主角立绘锚点 `char_mio_neutral.png`**
 ```
 Half-body character portrait of Morikawa Mio, a 27-year-old Japanese woman who left a Tokyo event-planning job and just arrived in a small mountain hot-spring town. Shoulder-length dark brown hair loosely tucked behind one ear, calm observant eyes, light natural makeup. Wearing a simple oatmeal knit cardigan over a white shirt, dark navy wide trousers, a canvas tote bag strap on her shoulder. Neutral, slightly tired but curious expression, facing slightly to the left, three-quarter view. Transparent background, cropped at the waist, vertical 2:3 composition with 5% headroom.
-[风格块]
+[插画风格块]
 ```
 
-**A2 Merge 物品锚点 `item_tool_01.png`（抹布）**
+**A2 Merge 物品锚点 `tool_01.png`（抹布）**
 ```
-Game item icon: a folded light-blue cotton cleaning cloth with a small stitched edge, slightly worn. Single object centered, occupying 80% of the frame, soft top-left lighting, thin dark-brown outline, gentle cel shading, no text, transparent background, mobile merge game icon.
-[风格块]
+Game item icon for a Japanese casual merge game: a folded light-blue cotton cleaning cloth with a small stitched edge. Single object centered, occupying 80% of the frame, no text, no background objects, transparent background.
+[休闲图标风格块]
 ```
 
 **A3 场景背景锚点 `bg_station_day.png`**
 ```
 Background illustration of an old, half-abandoned rural Japanese train station in a misty mountain valley, morning. A faded wooden station sign with peeling paper, a closed waiting room with boards over the windows, a small bus stop bench, a few weeds through the asphalt, thin morning mist, distant forested mountains, a river glimpse. No people, no text on signs. Wide 3:2 composition with the main subject in the center third.
-[风格块]
+[插画风格块]
 ```
 
 锁定后：把这 3 张保存为"锚点"，后面每次生成都上传对应类型的锚点图，并加一句：
@@ -94,7 +102,7 @@ Edit this image: keep the same character, outfit, pose, framing and art style. O
 路人 NPC 剪影（P1）：`npc_silhouette_elder_01..03`
 ```
 Simple flat silhouette-style illustration of an elderly Japanese townsperson (variant: man with cane / woman with shopping bag / man carrying a wooden bucket), soft single-tone fill with subtle shading, no facial details, transparent background.
-[风格块]
+[插画风格块]
 ```
 
 ---
@@ -103,49 +111,50 @@ Simple flat silhouette-style illustration of an elderly Japanese townsperson (va
 
 通用模板（替换"物品描述"）：
 ```
-Game item icon: [物品描述]. Single object centered, occupying 80% of the frame, soft top-left lighting, thin dark-brown outline, gentle cel shading, no text, transparent background, mobile merge game icon. Use the attached image as the exact style reference.
-[风格块]
+Game item icon for a Japanese casual merge game: [物品描述]. Single object centered, occupying 80% of the frame, slightly chunky and rounded "puffy" proportions, simplified shapes with very few details, bold dark-brown outline (thick, even width), flat cel shading with only 1-2 shade tones, a soft glossy white highlight on the top-left, bright warm pastel colors with good saturation, cute and friendly kawaii feel, readable at 64px, no text, no background objects, transparent background. Style similar to popular Japanese mobile puzzle / merge game item icons. Use the attached image as the exact style reference.
 ```
 
-同一条链里，等级越高的物品要"更大、更完整、颜色更丰富"，让玩家一眼看出等级。
+- 先只生成抹布（`tool_01`）一张，满意后把它当参考图附在后面每一张里，整套风格才统一。
+- 同一条链里，等级越高的物品要"更大、更完整、颜色更丰富"，让玩家一眼看出等级。
+- 文件名就是下表"文件"一列加 `.png`，直接覆盖旧图。
 
 ### 3.1 工具链（P0）
 | 文件 | 等级 | 物品描述 |
 |---|---|---|
-| item_tool_01 | Lv1 | 见 A2，抹布 |
-| item_tool_02 | Lv2 | `a cleaning kit: a small wooden bucket holding a cloth, a hand brush and a spray bottle` |
-| item_tool_03 | Lv3 | `a basic repair kit: a hammer, a roll of tape and a few nails on a small wooden tray` |
-| item_tool_04 | Lv4 | `a carpenter's toolset: a Japanese pull saw, a wood plane and a chisel bundled with a cloth wrap` |
-| item_tool_05 | Lv5 | `a premium repair toolbox, polished wooden box with brass corners, lid open showing neatly arranged tools` |
+| tool_01 | Lv1 | 见 A2，抹布 |
+| tool_02 | Lv2 | `a cleaning kit: a small wooden bucket holding a cloth, a hand brush and a spray bottle` |
+| tool_03 | Lv3 | `a basic repair kit: a hammer, a roll of tape and a few nails on a small wooden tray` |
+| tool_04 | Lv4 | `a carpenter's toolset: a Japanese pull saw, a wood plane and a chisel bundled with a cloth wrap` |
+| tool_05 | Lv5 | `a premium repair toolbox, polished wooden box with brass corners, lid open showing neatly arranged tools` |
 
 ### 3.2 食材链（P1）
 | 文件 | 等级 | 物品描述 |
 |---|---|---|
-| item_food_01 | Lv1 | `a small cloth sack of white rice tied with string` |
-| item_food_02 | Lv2 | `two onigiri rice balls wrapped with nori on a bamboo leaf` |
-| item_food_03 | Lv3 | `a simple wooden bento box with rice, tamagoyaki and pickles` |
-| item_food_04 | Lv4 | `a Japanese teishoku set meal on a tray: rice, miso soup, grilled fish, small side dishes` |
-| item_food_05 | Lv5 | `a festive banquet lacquer box (jubako) with colorful seasonal dishes` |
+| food_01 | Lv1 | `a small cloth sack of white rice tied with string` |
+| food_02 | Lv2 | `two onigiri rice balls wrapped with nori on a bamboo leaf` |
+| food_03 | Lv3 | `a simple wooden bento box with rice, tamagoyaki and pickles` |
+| food_04 | Lv4 | `a Japanese teishoku set meal on a tray: rice, miso soup, grilled fish, small side dishes` |
+| food_05 | Lv5 | `a festive banquet lacquer box (jubako) with colorful seasonal dishes` |
 
 ### 3.3 旅馆用品链（P1，Ch3 浴场用品段）
 | 文件 | 等级 | 物品描述 |
 |---|---|---|
-| item_inn_01 | Lv1 | `a folded white hand towel with a thin blue stripe` |
-| item_inn_02 | Lv2 | `a neatly folded blue-and-white yukata with an obi belt` |
-| item_inn_03 | Lv3 | `a set of ryokan room amenities on a tray: yukata, towel, tea cup, small soap` |
-| item_inn_04 | Lv4 | `a premium stay set: folded futon, yukata, wooden bath bucket and a small flower vase` |
+| inn_01 | Lv1 | `a folded white hand towel with a thin blue stripe` |
+| inn_02 | Lv2 | `a neatly folded blue-and-white yukata with an obi belt` |
+| inn_03 | Lv3 | `a set of ryokan room amenities on a tray: yukata, towel, tea cup, small soap` |
+| inn_04 | Lv4 | `a premium stay set: folded futon, yukata, wooden bath bucket and a small flower vase` |
 
 ### 3.4 生产器（P0 ×1，P1 ×2）
 | 文件 | 描述 |
 |---|---|
-| gen_toolbox (P0) | `a weathered old wooden toolbox with the lid closed, rusty iron latch, faded paper label, darker aged wood with chipped edges, a small sparkle hinting it can be tapped` (must look clearly older and closed, unlike the open brass-cornered item_tool_05) |
+| gen_toolbox (P0) | `a weathered old wooden toolbox with the lid closed, rusty iron latch, faded paper label, darker aged wood with chipped edges, a small sparkle hinting it can be tapped` (must look clearly older and closed, unlike the open brass-cornered tool_05) |
 | gen_ricebin (P1) | `a traditional wooden rice storage bin with a scoop on top` |
 | gen_linen (P1) | `a small wooden linen shelf stacked with towels` |
 
 ### 3.5 剧情 / 订单道具（P0）
 | 文件 | 描述 |
 |---|---|
-| prop_plank | `a few stacked light wooden planks` |
+| plank | `a few stacked light wooden planks` |
 | prop_old_map | `an old folded paper town map, slightly torn at the corners, faded colors` |
 | prop_charger | `a white phone charger with cable coiled` |
 | prop_project_docs | `a stack of project documents in a clear folder with a prefecture seal` |
@@ -160,7 +169,7 @@ Game item icon: [物品描述]. Single object centered, occupying 80% of the fra
 模板：
 ```
 Background illustration of [场景描述]. No people, no readable text. Wide 3:2 composition with the main subject in the center third so it can be cropped to a vertical phone screen. Use the attached image as the exact style reference.
-[风格块]
+[插画风格块]
 ```
 
 | 优先级 | 文件 | 场景描述 |
@@ -183,12 +192,16 @@ Background illustration of [场景描述]. No people, no readable text. Wide 3:2
 
 ## 5. UI
 
+UI 面板、按钮、HUD 图标都用第 1.2b 节「休闲图标风格块」，和棋盘物品保持一致。
+
 | 优先级 | 文件 | Prompt 主体 |
 |---|---|---|
 | P0 | ui_dialog_box | `A mobile game dialogue box panel, soft washi-paper texture in cream #F7F0E3, thin warm-brown border with a small cherry blossom ornament in one corner, rounded corners, empty center, transparent background, flat game UI asset` |
 | P0 | ui_nameplate | `A small horizontal name tag for a game dialogue, vermilion #D9614C with a subtle washi texture, rounded ends, empty, transparent background` |
 | P0 | ui_order_card | `A mobile game order card panel, cream paper with a wooden top strip and a small pin, empty slots area, transparent background` |
 | P0 | ui_board_bg | `A merge game board background: a 7x9 grid of soft tatami-like square tiles in warm beige, subtle wooden frame, top-down flat, no items` |
+| P0 | ui_board_frame | `A chunky rounded wooden frame for a mobile merge game board, warm wood #B9835A with a darker inner edge, empty transparent center, flat game UI asset, 9-slice friendly` |
+| P0 | ui_tile | `A single square tile for a merge game board, soft cream-beige with a slightly darker rounded inner border, subtle tatami weave, flat, no items` |
 | P0 | ui_buttons | `A set of rounded mobile game buttons in vermilion, warm wood and cream, each blank, soft shadow, transparent background, laid out in a grid` |
 | P0 | ui_icons_hud | `A set of flat mobile game HUD icons in the same style: town map, task list, merge board, collection book, settings gear, energy (small onsen steam drop), coin (old brass coin), gem (sakura crystal), restoration material (wooden plank with nails), town revival meter (paper lantern). Each icon in its own cell, transparent background` |
 | P0 | ui_chapter_banner | `A horizontal celebratory banner for "chapter complete": paper lantern garland, soft gold and vermilion ribbon, blank center for text, transparent background` |
