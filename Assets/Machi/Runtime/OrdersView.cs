@@ -19,8 +19,9 @@ namespace Machi
             _game = game;
             _visuals = visuals;
             _row = UiKit.Rect("Orders", area).Anchor(0, 0, 1, 1);
-            _empty = UiKit.Label("Empty", area, "暂时没有委托。去小镇看看吧。", 30, UiKit.Ink);
+            _empty = UiKit.Label("Empty", area, "暂时没有委托。去小镇看看吧。", 30, UiKit.Washi);
             ((RectTransform)_empty.transform).Anchor(0, 0, 1, 1);
+            _empty.gameObject.AddComponent<Outline>().effectColor = UiKit.WoodFrame;
             game.OrdersChanged += MarkDirty;
             game.Board.CellChanged += OnCell;
         }
@@ -67,8 +68,8 @@ namespace Machi
         void Card(OrderDef o, int index, int count)
         {
             float w = 1f / count;
-            var card = UiKit.Panel("Order_" + o.id, _row, UiKit.Cream);
-            ((RectTransform)card.transform).Anchor(index * w + 0.01f, 0.04f, (index + 1) * w - 0.01f, 0.96f);
+            var card = UiKit.Framed("Order_" + o.id, _row, out var cardOuter, 6f);
+            cardOuter.Anchor(index * w + 0.01f, 0.04f, (index + 1) * w - 0.01f, 0.96f);
 
             var who = UiKit.Label("Npc", card.transform, o.npc, 30, Color.white);
             var whoBg = UiKit.Panel("NpcBg", card.transform, UiKit.Vermilion);
@@ -90,7 +91,7 @@ namespace Machi
 
             bool ok = _game.CanFulfill(o);
             var btn = UiKit.Button("Give", card.transform, ok ? $"交付  +{o.rewardMaterials}材料" : "收集中",
-                                   ok ? UiKit.Vermilion : Color.gray, () => _game.Fulfill(o.id), 24);
+                                   ok ? UiKit.Vermilion : UiKit.Disabled, () => _game.Fulfill(o.id), 24);
             ((RectTransform)btn.transform).Anchor(0.05f, 0.04f, 0.95f, 0.2f);
             btn.interactable = ok;
         }

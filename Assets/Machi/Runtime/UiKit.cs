@@ -12,6 +12,11 @@ namespace Machi
         public static readonly Color WoodDark = Hex("8A5A3B");
         public static readonly Color Ink = Hex("3A322B");
         public static readonly Color Tile = Hex("E8DCC4");
+        // Japanese wooden door look for the merge screen: dark frame, lattice bars, washi paper panes.
+        public static readonly Color WoodFrame = Hex("4E3222");
+        public static readonly Color Lattice = Hex("6B4630");
+        public static readonly Color Washi = Hex("F5EFE2");
+        public static readonly Color Disabled = Hex("B9AF9F");
 
         static Font _font;
         public static Font Font
@@ -74,6 +79,19 @@ namespace Machi
             t.verticalOverflow = VerticalWrapMode.Overflow;
             t.raycastTarget = false;
             return t;
+        }
+
+        /// <summary>A washi panel inside a wooden border. Anchor the returned outer rect; put content in the inner image.</summary>
+        public static Image Framed(string name, Transform parent, out RectTransform outer, float border = 8f,
+                                   Color? frame = null, Color? fill = null)
+        {
+            var o = Panel(name, parent, frame ?? WoodFrame);
+            outer = o.rectTransform;
+            var inner = Panel("Inner", outer, fill ?? Washi);
+            inner.rectTransform.Anchor(0, 0, 1, 1);
+            inner.rectTransform.offsetMin = new Vector2(border, border);
+            inner.rectTransform.offsetMax = new Vector2(-border, -border);
+            return inner;
         }
 
         public static Button Button(string name, Transform parent, string text, Color bg, System.Action onClick, int size = 34)

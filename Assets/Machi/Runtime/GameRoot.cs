@@ -146,7 +146,7 @@ namespace Machi
             }
 
             // Board screen (covers the town while open)
-            _boardScreen = UiKit.Panel("BoardScreen", root, UiKit.Cream).rectTransform.Anchor(0, 0, 1, 0.93f);
+            _boardScreen = UiKit.Panel("BoardScreen", root, UiKit.Wood).rectTransform.Anchor(0, 0, 1, 0.93f);
             var ordersArea = UiKit.Rect("OrdersArea", _boardScreen).Anchor(0.02f, 0.76f, 0.98f, 0.99f);
             var boardArea = UiKit.Rect("BoardArea", _boardScreen).Anchor(0, 0.1f, 1, 0.76f);
             var dragLayer = UiKit.Rect("DragLayer", root).Anchor(0, 0, 1, 1);
@@ -169,14 +169,15 @@ namespace Machi
             ((RectTransform)resetBtn.transform).Anchor(0.82f, 0.1f, 0.97f, 0.9f);
 
             // Building panel
-            _buildingPanel = UiKit.Panel("BuildingPanel", root, UiKit.Cream).rectTransform.Anchor(0.08f, 0.1f, 0.92f, 0.32f);
-            _bpTitle = UiKit.Label("Title", _buildingPanel, "", 44, UiKit.Ink);
+            var bpInner = UiKit.Framed("BuildingPanel", root, out _buildingPanel, 10f).rectTransform;
+            _buildingPanel.Anchor(0.08f, 0.1f, 0.92f, 0.32f);
+            _bpTitle = UiKit.Label("Title", bpInner, "", 44, UiKit.Ink);
             ((RectTransform)_bpTitle.transform).Anchor(0.05f, 0.72f, 0.95f, 0.95f);
-            _bpBody = UiKit.Label("Body", _buildingPanel, "", 32, UiKit.WoodDark);
+            _bpBody = UiKit.Label("Body", bpInner, "", 32, UiKit.WoodDark);
             ((RectTransform)_bpBody.transform).Anchor(0.05f, 0.35f, 0.95f, 0.72f);
-            _bpRestore = UiKit.Button("Restore", _buildingPanel, "修复", UiKit.Vermilion, RestoreSelected, 36);
+            _bpRestore = UiKit.Button("Restore", bpInner, "修复", UiKit.Vermilion, RestoreSelected, 36);
             ((RectTransform)_bpRestore.transform).Anchor(0.05f, 0.06f, 0.6f, 0.3f);
-            var close = UiKit.Button("Close", _buildingPanel, "关闭", Color.gray, () => _buildingPanel.gameObject.SetActive(false), 32);
+            var close = UiKit.Button("Close", bpInner, "关闭", UiKit.Lattice, () => _buildingPanel.gameObject.SetActive(false), 32);
             ((RectTransform)close.transform).Anchor(0.65f, 0.06f, 0.95f, 0.3f);
             _buildingPanel.gameObject.SetActive(false);
 

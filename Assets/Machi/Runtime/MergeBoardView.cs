@@ -29,8 +29,9 @@ namespace Machi
             _dragLayer = dragLayer;
             var b = game.Board;
 
-            _info = UiKit.Label("Info", area, "点击工具箱产出物品，拖动相同物品合成", 30, UiKit.Ink);
+            _info = UiKit.Label("Info", area, "点击工具箱产出物品，拖动相同物品合成", 30, UiKit.Washi);
             ((RectTransform)_info.transform).Anchor(0, 0.94f, 1, 1);
+            _info.gameObject.AddComponent<Outline>().effectColor = UiKit.WoodFrame;
 
             // Grid scaled to fit the space below the info line (leaves room for the 16px frame).
             var fit = UiKit.Rect("GridArea", area).Anchor(0.02f, 0.01f, 0.98f, 0.93f);
@@ -40,17 +41,22 @@ namespace Machi
             var aspect = _grid.gameObject.AddComponent<AspectRatioFitter>();
             aspect.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
             aspect.aspectRatio = (float)b.Width / b.Height;
+            // Wooden door: a dark outer frame, then lattice bars showing through the gaps between washi cells.
             float gap = 4f;
-            var frame = UiKit.Panel("Frame", _grid, UiKit.Wood);
+            var frame = UiKit.Panel("Frame", _grid, UiKit.WoodFrame);
             ((RectTransform)frame.transform).Anchor(0, 0, 1, 1);
             ((RectTransform)frame.transform).offsetMin = new Vector2(-16, -16);
             ((RectTransform)frame.transform).offsetMax = new Vector2(16, 16);
+            var bars = UiKit.Panel("Lattice", _grid, UiKit.Lattice);
+            ((RectTransform)bars.transform).Anchor(0, 0, 1, 1);
+            ((RectTransform)bars.transform).offsetMin = new Vector2(-4, -4);
+            ((RectTransform)bars.transform).offsetMax = new Vector2(4, 4);
 
             _cells = new CellView[b.Width * b.Height];
             for (int y = 0; y < b.Height; y++)
                 for (int x = 0; x < b.Width; x++)
                 {
-                    var bg = UiKit.Panel($"Cell_{x}_{y}", _grid, UiKit.Tile);
+                    var bg = UiKit.Panel($"Cell_{x}_{y}", _grid, UiKit.Washi);
                     var rt = (RectTransform)bg.transform;
                     // y = 0 is the top row
                     rt.Anchor((float)x / b.Width, 1f - (float)(y + 1) / b.Height,
