@@ -202,6 +202,8 @@ namespace Machi
             bool locked = !Game.IsRegionUnlocked(def.region);
             _bpBody.text = locked ? "这个区域还没有开放"
                 : $"下一阶段：{next.note}（{stage}/{max}）\n需要修复材料 {next.cost}，现有 {Game.Materials}";
+            if (!locked && Game.Materials < next.cost)
+                _bpBody.text += "\n修复材料不够：点「去合成」完成委托就能获得";
             _bpRestore.interactable = !locked && Game.Materials >= next.cost;
         }
 

@@ -203,6 +203,23 @@ namespace Machi.Core
             return b.stages != null && s < b.stages.Length ? b.stages[s].cost : -1;
         }
 
+        /// <summary>
+        /// The building to restore next: the one a locked order waits on (its other prerequisites
+        /// met), else any unfinished building in an open region. Null when nothing is left.
+        /// </summary>
+        public string NextRestoreTarget()
+        {
+            foreach (var o in Cfg.Config.orders ?? new OrderDef[0])
+            {
+                if (_completedOrders.Contains(o.id) || string.IsNullOrEmpty(o.prereqBuilding)) continue;
+                if (!string.IsNullOrEmpty(o.prereqOrder) && !_completedOrders.Contains(o.prereqOrder)) continue;
+                if (GetStage(o.prereqBuilding) < o.prereqStage) return o.prereqBuilding;
+            }
+            foreach (var b in Cfg.Config.buildings ?? new BuildingDef[0])
+                if (IsRegionUnlocked(b.region) && GetStage(b.id) < MaxStage(b.id)) return b.id;
+            return null;
+        }
+
         public RestoreResult Restore(string buildingId)
         {
             if (!Cfg.Buildings.TryGetValue(buildingId, out var b)) return RestoreResult.Unknown;

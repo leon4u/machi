@@ -64,10 +64,12 @@ static class Program
         Check(g.Materials == 2 && g.Coins == 10, "rewards granted");
         Check(!g.Fulfill("o_office"), "cannot fulfil twice");
         Check(g.ActiveOrders().Count == 0, "sign order locked until office restored");
+        Check(g.NextRestoreTarget() == "office_hut", "hint points at office");
         Check(g.Restore("office_hut") == RestoreResult.Restored && g.GetStage("office_hut") == 1, "restore office");
         Check(g.Revival == 1 && g.Materials == 0, "revival up, materials spent");
         Check(g.Restore("office_hut") == RestoreResult.MaxStage, "office max stage");
         Check(g.ActiveOrders().Any(o => o.id == "o_sign"), "sign order unlocked");
+        Check(g.NextRestoreTarget() == "station_sign", "hint moves on to the sign");
         Check(g.Restore("station_sign") == RestoreResult.NotEnoughMaterials, "not enough materials");
         Check(!g.Fulfill("o_sign"), "cannot fulfil without items");
 

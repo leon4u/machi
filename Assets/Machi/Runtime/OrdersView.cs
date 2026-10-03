@@ -47,9 +47,21 @@ namespace Machi
             for (int i = _row.childCount - 1; i >= 0; i--) Destroy(_row.GetChild(i).gameObject);
             var orders = _game.ActiveOrders();
             _empty.gameObject.SetActive(orders.Count == 0);
+            if (orders.Count == 0) _empty.text = EmptyHint();
             int n = Mathf.Max(1, Mathf.Min(orders.Count, 3));
             for (int i = 0; i < orders.Count && i < 3; i++)
                 Card(orders[i], i, n);
+        }
+
+        string EmptyHint()
+        {
+            var id = _game.NextRestoreTarget();
+            if (id == null) return "暂时没有委托。";
+            int cost = _game.NextStageCost(id), have = _game.Materials;
+            var name = _game.Cfg.Buildings[id].name;
+            return have >= cost
+                ? $"暂时没有委托。点「回到小镇」，修复「{name}」吧（需要修复材料 {cost}，现有 {have}）"
+                : $"暂时没有委托。下一步是修复「{name}」（需要修复材料 {cost}，现有 {have}）";
         }
 
         void Card(OrderDef o, int index, int count)
