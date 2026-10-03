@@ -1,0 +1,14 @@
+{
+    "name": "Machi.Runtime",
+    "rootNamespace": "Machi",
+    "references": ["Machi.Core"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
