@@ -1,7 +1,7 @@
 """Tomoru Machi 3D asset builders. Every asset faces -Y (toward the camera / street).
 Origin = ground center of the footprint. Each builder returns the joined object."""
 import math, random
-from lowpoly_lib import box, gable, hip, lean, cyl, cone, blob, join
+from lowpoly_lib import box, gable, hip, lean, cyl, cone, blob, join, slab, plank
 
 # ------------------------------------------------------------------ props
 def street_lamp(lit=True, name="prop_street_lamp"):
@@ -110,48 +110,129 @@ def platform(length=20.0, name="rail_platform"):
                  box(length, 0.15, 0.02, (0, -1.0, 0.9), color="mustard")], name)
 
 # ------------------------------------------------------------ station area
+# ------------------------------------------------- ruined / restored dressing
+# Stage 0 must read as "abandoned" from the 45-degree game camera, where roofs and the
+# ground in front of a building take most of the screen. So the ruin is told mainly with
+# tarps, holes and moss on the roof plus debris on the ground; the restored stages answer
+# with a fresh roof colour, flowers and lanterns.
+
+def _roof_patch(z_of_y, x0, x1, y0, y1, color, lift=0.04):
+    pts = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    return slab([(x, y, z_of_y(y) + lift) for x, y in pts], color)
+
+def _roof_ruin(z_of_y, x_half, y_eave, y_ridge, seed):
+    """Blue tarp held by stones, a couple of dark holes and moss on the front slope."""
+    rnd = random.Random(seed)
+    span = y_ridge - y_eave
+    at = lambda f: y_eave + span * f
+    tx = rnd.uniform(-x_half * 0.5, x_half * 0.1)
+    tw = x_half * 0.75
+    parts = [_roof_patch(z_of_y, tx, tx + tw, at(0.15), at(0.85), "tarp", lift=0.05)]
+    for fx, fy in ((0.1, 0.2), (0.9, 0.25), (0.15, 0.8), (0.85, 0.75)):
+        y = at(fy)
+        parts.append(blob(0.18, (tx + tw * fx, y, z_of_y(y) + 0.12), color="stone_dark", sz=0.6))
+    hx = tx + tw + 0.6 if tx + tw + 1.5 < x_half else -x_half + 0.4
+    parts.append(_roof_patch(z_of_y, hx, hx + 0.9, at(0.35), at(0.65), "black", lift=0.03))
+    parts.append(_roof_patch(z_of_y, -x_half * 0.15, x_half * 0.05, at(0.05), at(0.3), "black", lift=0.03))
+    for i in range(5):
+        y = at(rnd.uniform(0.05, 0.9))
+        x = rnd.uniform(-x_half * 0.9, x_half * 0.9)
+        parts.append(blob(0.25 + rnd.random() * 0.2, (x, y, z_of_y(y) + 0.05), color="moss", sz=0.35))
+    return parts
+
+def _debris(x_half, front_y, seed, n=6):
+    """Junk in front of a building: loose boards, a broken crate, bin bags, rocks and tall weeds."""
+    rnd = random.Random(seed)
+    parts = []
+    for i in range(n):
+        x = rnd.uniform(-x_half, x_half)
+        y = front_y - rnd.uniform(0.4, 1.6)
+        k = i % 4
+        if k == 0:
+            parts.append(box(rnd.uniform(1.0, 1.8), 0.22, 0.06, (x, y, 0.02), color="wood_gray", rot=rnd.uniform(-0.8, 0.8)))
+        elif k == 1:
+            parts += [box(0.6, 0.5, 0.35, (x, y, 0), color="grime", rot=rnd.uniform(0, 1)),
+                      box(0.5, 0.08, 0.3, (x + 0.2, y - 0.4, 0), color="wood_gray", rot=0.6)]
+        elif k == 2:
+            parts += [blob(0.32, (x, y, 0.25), color="black", sz=0.8), blob(0.25, (x + 0.4, y + 0.1, 0.2), color="indigo", sz=0.8)]
+        else:
+            parts.append(blob(0.3, (x, y, 0.12), color="stone_dark", sz=0.5))
+    for i in range(n + 2):
+        x = rnd.uniform(-x_half - 0.3, x_half + 0.3)
+        y = front_y - rnd.uniform(0.1, 1.2)
+        parts.append(cone(0.12, 0.6 + rnd.random() * 0.5, (x, y, 0), color="moss", seg=4))
+        if i % 2 == 0:
+            parts.append(blob(0.3, (x + 0.2, y, 0.15), color="grass_dark", sz=0.6))
+    return parts
+
+def _boarded(x, y, z, w, h):
+    """Two boards nailed across a window (or door) in an X."""
+    import math as _m
+    ang = _m.degrees(_m.atan2(h, w))
+    diag = _m.hypot(w, h) + 0.1
+    return [plank(diag, 0.2, (x, y - 0.06, z), ang), plank(diag, 0.2, (x, y - 0.1, z), -ang)]
+
+def _planter(x, y, seed=0):
+    rnd = random.Random(seed)
+    colors = ["sakura", "flower_y", "vermilion", "white"]
+    parts = [box(0.9, 0.4, 0.4, (x, y, 0), color="wood"), blob(0.32, (x, y, 0.5), color="leaf", sz=0.6)]
+    for i in range(4):
+        parts.append(blob(0.1, (x - 0.3 + i * 0.2, y + rnd.uniform(-0.1, 0.1), 0.65), color=colors[(i + seed) % 4]))
+    return parts
+
+def _hanging_lantern(x, y, z):
+    return [cyl(0.18, 0.4, (x, y, z - 0.4), color="lamp", seg=8),
+            cyl(0.14, 0.05, (x, y, z), color="black", seg=8)]
+
 def station_sign(stage=0):
     if stage == 0:
+        # one post snapped, so the board hangs crooked; lamp fallen on the ground
         parts = [box(0.15, 0.15, 2.4, (-1.0, 0, 0), color="wood_gray"),
-                 box(0.15, 0.15, 2.2, (1.0, 0, 0), color="wood_gray"),
-                 box(2.4, 0.08, 0.8, (0, -0.1, 1.3), color="paper_old"),
-                 box(0.7, 0.03, 0.5, (-0.5, -0.16, 1.45), color="white"),   # peeling paper
-                 box(0.4, 0.03, 0.3, (0.6, -0.16, 1.4), color="plaster_dirty"),
-                 box(0.5, 0.5, 0.15, (0, 0, 2.4), color="metal"),
-                 box(0.3, 0.3, 0.25, (0, 0, 2.15), color="paper_old"),      # dead lamp
-                 cone(0.08, 0.5, (0.9, -0.2, 0), color="moss", seg=4),
-                 cone(0.08, 0.4, (-0.9, -0.25, 0), color="moss", seg=4)]
+                 box(0.15, 0.15, 1.1, (1.0, 0, 0), color="wood_gray"),
+                 plank(2.4, 0.8, (0, -0.1, 1.55), -14, color="paper_old", thick=0.08),
+                 plank(0.7, 0.45, (-0.5, -0.17, 1.75), -14, color="white", thick=0.03),
+                 plank(1.3, 0.15, (1.3, -0.5, 0.08), 80, color="wood_gray"),
+                 box(0.3, 0.3, 0.25, (0.6, -0.9, 0), color="paper_old", rot=0.5),
+                 box(0.5, 0.5, 0.12, (-0.4, -1.1, 0), color="metal", rot=0.3)]
+        parts += _debris(1.4, -0.2, seed=21, n=4)
     else:
         parts = [box(0.15, 0.15, 2.4, (-1.0, 0, 0), color="wood_dark"),
                  box(0.15, 0.15, 2.4, (1.0, 0, 0), color="wood_dark"),
                  box(2.4, 0.08, 0.8, (0, -0.1, 1.3), color="white"),
                  box(2.4, 0.09, 0.12, (0, -0.11, 1.5), color="blue_sign"),
-                 box(0.6, 0.6, 0.12, (0, 0, 2.45), color="roof_dark"),
+                 box(0.6, 0.6, 0.12, (0, 0, 2.45), color="roof_new"),
                  box(0.32, 0.32, 0.3, (0, 0, 2.15), color="lamp")]
+        parts += _planter(-1.6, -0.4, 1) + _planter(1.6, -0.4, 2)
     return join(parts, f"station_sign_s{stage}")
 
 def waiting_room(stage=0):
     w, d, h = 10.0, 5.0, 3.2
     parts = [box(w + 0.3, d + 0.3, 0.3, color="stone_dark"),
              box(w, d, h, (0, 0, 0.3), color="plaster_dirty" if stage == 0 else "plaster"),
-             box(w + 0.05, d + 0.05, 0.6, (0, 0, 0.3), color="wood_dark"),
-             hip(w + 1.4, d + 1.4, 1.8, (0, 0, h + 0.3), color="roof_dark" if stage == 0 else "roof", ridge=0.55),
+             box(w + 0.05, d + 0.05, 0.6, (0, 0, 0.3), color="grime" if stage == 0 else "wood_dark"),
+             hip(w + 1.4, d + 1.4, 1.8, (0, 0, h + 0.3), color="roof_dark" if stage == 0 else "roof_new", ridge=0.55),
              box(1.4, 0.1, 2.3, (0, -d / 2 - 0.02, 0.3), color="wood_dark" if stage == 0 else "glass")]
     for x in (-3.2, -1.8, 1.8, 3.2):
         if stage == 0:
-            parts += [box(1.1, 0.08, 1.0, (x, -d / 2 - 0.03, 1.3), color="glass"),
-                      box(1.3, 0.06, 0.18, (x, -d / 2 - 0.08, 1.55), color="wood_gray"),
-                      box(1.3, 0.06, 0.18, (x, -d / 2 - 0.08, 1.95), color="wood_gray")]
+            parts += [box(1.1, 0.08, 1.0, (x, -d / 2 - 0.03, 1.3), color="black")]
+            parts += _boarded(x, -d / 2, 1.8, 1.1, 1.0)
         else:
             parts += [box(1.1, 0.08, 1.0, (x, -d / 2 - 0.03, 1.3), color="lamp"),
                       box(0.06, 0.1, 1.0, (x, -d / 2 - 0.05, 1.3), color="wood_dark")]
     parts.append(box(3.0, 0.1, 0.5, (0, -d / 2 - 0.05, h - 0.4), color="white" if stage else "paper_old"))
     if stage == 0:
-        parts += [box(1.2, 0.1, 1.6, (0.2, -d / 2 - 0.08, 0.6), color="wood_gray")]  # board over door
-        for x in (-4.5, 4.4, 2.5):
-            parts.append(cone(0.1, 0.45, (x, -d / 2 - 0.3, 0.3), color="moss", seg=4))
+        parts += _boarded(0, -d / 2 - 0.02, 1.45, 1.4, 2.0)
+        roof_z = lambda y: h + 0.3 + 1.8 * (y + (d + 1.4) / 2) / ((d + 1.4) / 2)
+        parts += _roof_ruin(roof_z, 3.0, -(d + 1.4) / 2, 0.0, seed=31)
+        parts += _debris(w / 2, -d / 2, seed=32, n=7)
     else:
         parts.append(box(0.5, 0.5, 0.4, (0, -d / 2 - 0.4, h - 0.3), color="lamp"))
+        for x in (-4.4, -2.5, 2.5, 4.4):
+            parts += _planter(x, -d / 2 - 0.6, int(x * 10) % 4)
+        parts += _hanging_lantern(-1.2, -d / 2 - 0.5, h) + _hanging_lantern(1.2, -d / 2 - 0.5, h)
+        parts += [box(1.8, 0.5, 0.08, (-3.2, -d / 2 - 1.4, 0.42), color="wood"),
+                  box(0.08, 0.4, 0.42, (-3.9, -d / 2 - 1.4, 0), color="wood_dark"),
+                  box(0.08, 0.4, 0.42, (-2.5, -d / 2 - 1.4, 0), color="wood_dark")]
     return join(parts, f"station_waiting_room_s{stage}")
 
 def bus_stop(name="station_bus_stop"):
@@ -170,7 +251,7 @@ def office_hut(stage=0):
     w, d, h = 4.5, 3.5, 2.6
     parts = [box(w + 0.2, d + 0.2, 0.25, color="stone_dark"),
              box(w, d, h, (0, 0, 0.25), color="wood_gray" if stage == 0 else "wood"),
-             lean(w + 0.6, d + 0.6, 0.6, (0, 0, h + 0.25), color="roof_dark" if stage == 0 else "roof"),
+             lean(w + 0.6, d + 0.6, 0.6, (0, 0, h + 0.25), color="roof_dark" if stage == 0 else "roof_new"),
              box(0.9, 0.08, 2.0, (-1.2, -d / 2 - 0.02, 0.25), color="wood_dark"),
              box(1.4, 0.08, 0.9, (0.9, -d / 2 - 0.02, 1.2), color="glass"),
              box(1.5, 0.1, 0.1, (0.9, -d / 2 - 0.06, 2.12), color="wood_dark")]
@@ -182,7 +263,12 @@ def office_hut(stage=0):
             parts.append(blob(0.5, (rnd.uniform(-w / 2, w / 2), rnd.uniform(-d / 2, d / 2), h + 0.6), color="grass_dark", sz=0.4))
         parts += [box(0.6, 0.5, 0.45, (1.8, -d / 2 - 0.6, 0), color="paper_old"),
                   box(0.5, 0.4, 0.4, (1.6, -d / 2 - 0.7, 0.45), color="paper_old")]
+        parts += _boarded(0.9, -d / 2, 1.65, 1.4, 0.9)
+        roof_z = lambda y: h + 0.25 + 0.12 + 0.6 * (y + (d + 0.6) / 2) / (d + 0.6)
+        parts += _roof_ruin(roof_z, w / 2, -(d + 0.6) / 2, (d + 0.6) / 2, seed=41)
+        parts += _debris(w / 2, -d / 2, seed=42, n=5)
     else:
+        parts += _planter(-1.8, -d / 2 - 0.5, 3) + _hanging_lantern(-0.5, -d / 2 - 0.3, 2.6)
         parts += [box(0.35, 0.35, 0.35, (-0.5, -d / 2 - 0.2, 2.1), color="lamp"),
                   cyl(0.2, 0.35, (0.2, -d / 2 - 0.5, 0), color="rust", seg=7, r2=0.25),
                   blob(0.3, (0.2, -d / 2 - 0.5, 0.6), color="leaf"),
@@ -213,8 +299,9 @@ def chizurudo(stage=0):
     """Wagashi shop Chizuru-do. 0 closed/faded, 1 facade fixed (First Hour), 2 open two days a week, 3 open."""
     w, d = 6.0, 7.0
     dirty = stage == 0
-    parts = _machiya(w, d, wall="plaster_dirty" if dirty else "plaster", ground="wood_gray" if dirty else "wood")
-    parts += _upper_windows(w, d, "glass")
+    parts = _machiya(w, d, wall="plaster_dirty" if dirty else "plaster", ground="wood_gray" if dirty else "wood",
+                     roof="roof_dark" if dirty else "roof_new", awning="grime" if dirty else "roof_new")
+    parts += _upper_windows(w, d, "black" if dirty else ("lamp" if stage >= 2 else "glass"))
     fy = -d / 2 - 0.04
     # signboard on the awning
     parts.append(box(2.8, 0.12, 0.7, (0, -d / 2 - 0.85, 3.45), color="paper_old" if dirty else "wood_dark"))
@@ -243,8 +330,16 @@ def chizurudo(stage=0):
             parts.append(cone(0.08, 0.4 + rnd.random() * 0.3, (rnd.uniform(-w / 2, w / 2), -d / 2 - 0.4 - rnd.random() * 0.4, 0), color="moss", seg=4))
         parts.append(box(0.32, 0.32, 0.4, (w / 2 - 0.4, -d / 2 - 0.25, 2.3), color="paper_old"))  # dead lamp
         parts.append(cyl(0.22, 0.35, (-w / 2 + 0.3, -d / 2 - 0.5, 0), color="rust", seg=7, r2=0.27))   # empty pot
+        uy = -d / 2 + 0.5
+        parts += _boarded(-w / 4, uy, 4.1, 1.4, 0.9) + _boarded(w / 4, uy, 4.1, 1.4, 0.9)
+        roof_z = lambda y: 5.85 + 1.7 * (y - (0.5 - (d + 0.2) / 2)) / ((d + 0.2) / 2)
+        parts += _roof_ruin(roof_z, (w + 0.8) / 2 - 0.3, 0.5 - (d + 0.2) / 2, 0.5, seed=51)
+        parts += _debris(w / 2, -d / 2 - 0.3, seed=52, n=6)
     else:
         parts.append(box(0.32, 0.32, 0.4, (w / 2 - 0.4, -d / 2 - 0.25, 2.3), color="lamp"))
+        parts += _planter(-w / 2 - 0.2, -d / 2 - 1.2, stage) + _planter(w / 2 + 0.2, -d / 2 - 1.2, stage + 1)
+        if stage >= 2:
+            parts += _hanging_lantern(-w / 2 + 0.6, -d / 2 - 0.7, 2.85) + _hanging_lantern(w / 2 - 0.6, -d / 2 - 0.7, 2.85)
         for x in ((w / 2 - 0.4,) if stage >= 2 else (w / 2 - 0.4, -w / 2 + 0.4)):
             parts += [cyl(0.22, 0.35, (x, -d / 2 - 0.5, 0), color="rust", seg=7, r2=0.27),
                       blob(0.3, (x, -d / 2 - 0.5, 0.6), color="leaf"), blob(0.08, (x + 0.1, -d / 2 - 0.65, 0.8), color="sakura")]

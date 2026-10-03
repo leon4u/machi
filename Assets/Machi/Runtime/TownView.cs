@@ -206,7 +206,11 @@ namespace Machi
                 Top = new Vector3(bounds.center.x, bounds.max.y, bounds.center.z);
             }
             else Top = transform.position;
-            if (animate) StartCoroutine(Pop(_stages[stage].transform));
+            if (animate)
+            {
+                StartCoroutine(Pop(_stages[stage].transform));
+                RestoreFx.Play(transform.position, Top);
+            }
         }
 
         static IEnumerator Pop(Transform t)
@@ -218,6 +222,104 @@ namespace Machi
                 yield return null;
             }
             t.localScale = Vector3.one;
+        }
+    }
+
+    /// <summary>One-shot dust cloud at the base and sparkles over the roof when a building is restored.</summary>
+    public static class RestoreFx
+    {
+        static Material _mat;
+
+        public static void Play(Vector3 ground, Vector3 top)
+        {
+            float radius = Mathf.Max(1.5f, (top.y - ground.y) * 0.6f);
+            Burst("RestoreDust", new Vector3(top.x, ground.y + 0.3f, top.z), 40, radius,
+                  new Color(0.93f, 0.9f, 0.84f, 0.9f), new Color(0.8f, 0.76f, 0.68f, 0.9f),
+                  speed: 3.5f, size: 1.6f, life: 1.1f, gravity: -0.05f, flat: true);
+            Burst("RestoreSparkle", top + Vector3.up * 0.5f, 30, radius * 0.6f,
+                  new Color(1f, 0.85f, 0.4f), Color.white,
+                  speed: 4f, size: 0.35f, life: 1.4f, gravity: 0.3f, flat: false);
+        }
+
+        static void Burst(string name, Vector3 at, int count, float radius, Color a, Color b,
+                          float speed, float size, float life, float gravity, bool flat)
+        {
+            var go = new GameObject(name);
+            go.transform.position = at;
+            var ps = go.AddComponent<ParticleSystem>();
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+            var main = ps.main;
+            main.duration = 1f;
+            main.loop = false;
+            main.playOnAwake = false;
+            main.startLifetime = new ParticleSystem.MinMaxCurve(life * 0.6f, life);
+            main.startSpeed = new ParticleSystem.MinMaxCurve(speed * 0.5f, speed);
+            main.startSize = new ParticleSystem.MinMaxCurve(size * 0.6f, size);
+            main.startColor = new ParticleSystem.MinMaxGradient(a, b);
+            main.gravityModifier = gravity;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+            main.stopAction = ParticleSystemStopAction.Destroy;
+
+            var emission = ps.emission;
+            emission.rateOverTime = 0f;
+            emission.SetBursts(new[] { new ParticleSystem.Burst(0f, (short)count) });
+
+            var shape = ps.shape;
+            if (flat)
+            {
+                shape.shapeType = ParticleSystemShapeType.Circle;   // ring of dust spreading along the ground
+                shape.radius = radius;
+                shape.rotation = new Vector3(90f, 0f, 0f);
+            }
+            else
+            {
+                shape.shapeType = ParticleSystemShapeType.Cone;     // sparkles shooting up from the roof
+                shape.angle = 35f;
+                shape.radius = radius;
+                shape.rotation = new Vector3(-90f, 0f, 0f);
+            }
+
+            var fade = new Gradient();
+            fade.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+                         new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(1f, 0.5f), new GradientAlphaKey(0f, 1f) });
+            var col = ps.colorOverLifetime;
+            col.enabled = true;
+            col.color = new ParticleSystem.MinMaxGradient(fade);
+
+            var sz = ps.sizeOverLifetime;
+            sz.enabled = true;
+            sz.size = new ParticleSystem.MinMaxCurve(1f, flat ? AnimationCurve.Linear(0f, 0.6f, 1f, 1.6f)
+                                                             : AnimationCurve.Linear(0f, 1f, 1f, 0f));
+
+            var rend = go.GetComponent<ParticleSystemRenderer>();
+            rend.material = Mat();
+            ps.Play();
+        }
+
+        static Material Mat()
+        {
+            if (_mat != null) return _mat;
+            // Sprites/Default is alpha-blended, tinted by particle colour, and exists in Built-in and URP.
+            _mat = new Material(Shader.Find("Sprites/Default")) { name = "M_RestoreFx" };
+            _mat.mainTexture = SoftDot(32);
+            return _mat;
+        }
+
+        static Texture2D SoftDot(int n)
+        {
+            var tex = new Texture2D(n, n, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+            var px = new Color32[n * n];
+            float r = n / 2f;
+            for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
+                {
+                    float d = Vector2.Distance(new Vector2(x + 0.5f, y + 0.5f), new Vector2(r, r)) / r;
+                    px[y * n + x] = new Color32(255, 255, 255, (byte)(255 * Mathf.Clamp01(1f - d * d)));
+                }
+            tex.SetPixels32(px);
+            tex.Apply();
+            return tex;
         }
     }
 }

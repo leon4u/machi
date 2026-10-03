@@ -19,6 +19,7 @@ PALETTE = [
     ("indigo", "34476B"), ("mustard", "D9A940"), ("paper_old", "D8CBB0"),
     ("shutter", "9AA0A3"), ("leaf", "6E9A55"), ("sand", "D9CBAA"),
     ("black", "2E2B28"), ("red_dark", "9E3B32"), ("blue_sign", "4F79A6"),
+    ("roof_new", "6A84A0"), ("tarp", "3F7FC4"), ("flower_y", "F2D14B"), ("grime", "6B6458"),
 ]
 IDX = {n: i for i, (n, _) in enumerate(PALETTE)}
 SW = 4          # swatch size in px
@@ -176,6 +177,25 @@ def blob(r, loc=(0, 0, 0), color="leaf", sz=1.0, name="blob"):
     faces = [tuple(p.vertices) for p in me.polygons]
     bpy.data.meshes.remove(me)
     return _mesh(name, _xf(verts, loc), faces, color)
+
+def slab(corners, color, thick=0.05, name="slab"):
+    """Thin plate lying on four (x, y, z) corners, thickened upward. Used for tarps and patches on roofs."""
+    top = [(x, y, z + thick) for x, y, z in corners]
+    v = list(corners) + top
+    f = [(0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]
+    return _mesh(name, v, f, color)
+
+def plank(length, width, center, angle_deg=0.0, color="wood_gray", thick=0.06, name="plank"):
+    """Board in the XZ plane (on a -Y facing wall), rotated by angle_deg around Y. center = (x, y, z)."""
+    a = math.radians(angle_deg)
+    c, s_ = math.cos(a), math.sin(a)
+    l, w, t = length / 2, width / 2, thick / 2
+    v = []
+    for yy in (-t, t):
+        for x, z in ((-l, -w), (l, -w), (l, w), (-l, w)):
+            v.append((center[0] + x * c - z * s_, center[1] + yy, center[2] + x * s_ + z * c))
+    f = [(0, 1, 2, 3), (4, 7, 6, 5), (0, 4, 5, 1), (1, 5, 6, 2), (2, 6, 7, 3), (3, 7, 4, 0)]
+    return _mesh(name, v, f, color)
 
 def join(parts, name, origin=(0, 0, 0)):
     """Join parts into one object named `name`, origin at world `origin`."""
